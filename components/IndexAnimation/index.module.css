@@ -1,0 +1,172 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-image: url("/img/forest.jpg");
+    background-size: cover;
+}
+
+.button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.box {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+}
+
+.box1 {
+    z-index: 1
+}
+
+.box2 { 
+    background-color: none;
+    z-index: 0;
+}
+
+.headingWrapper {
+    max-width: 90%;
+    text-align: center;
+}
+
+.heading {
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: .75;
+    margin: 10px 0;
+    color: white;
+}
+
+.transparentHeading {
+    background-image: url("https://media.giphy.com/media/eGNpmOUeIIYUB4P4Al/giphy-downsized.gif");
+    background-size: cover;
+    color: transparent;
+    text-transform: uppercase;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.fastFade {
+    animation: fadeIn ease 1s;
+    -webkit-animation: fadeIn ease 1s;
+    -moz-animation: fadeIn ease 1s;
+    -o-animation: fadeIn ease 1s;
+    -ms-animation: fadeIn ease 1s;
+
+}
+
+.fadeIn {
+    animation: fadeIn ease 8s;
+    animation-delay: 5s;
+    -webkit-animation: fadeIn ease 10s;
+    -moz-animation: fadeIn ease 10s;
+    -o-animation: fadeIn ease 10s;
+    -ms-animation: fadeIn ease 10s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+  }
+}
+
+
+.fadeOut {
+    animation: fadeOut ease 8s;
+    animation-fill-mode: forwards;
+    
+    -webkit-animation: fadeOut ease 8s;
+    -moz-animation: fadeOut ease 8s;
+    -o-animation: fadeOut ease 8s;
+    -ms-animation: fadeOut ease 8s;
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-moz-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-o-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-ms-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+  }
+}

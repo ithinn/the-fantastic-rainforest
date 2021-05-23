@@ -1,0 +1,26 @@
+{
+  "name": "nextjs",
+  "version": "4.0.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.11.2",
+    "clsx": "latest",
+    "cosmicjs": "^4.1.2",
+    "highcharts": "^9.1.0",
+    "highcharts-react-official": "^3.0.0",
+    "next": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-confetti": "^6.0.1",
+    "react-dom": "latest",
+    "react-map-gl": "^6.1.15",
+    "reflexbox": "^4.0.6"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  }
+}
