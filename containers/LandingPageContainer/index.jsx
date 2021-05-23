@@ -49,6 +49,7 @@ const LandingPageContainer = ({ data, page }) => {
             setPopupContent(popupData[slideIndex - 1]);
             setSlideIndex(slideIndex - 1);
         }
+        window.scroll({top:0, behavior:'smooth'})
     }
 
     //Close popup
