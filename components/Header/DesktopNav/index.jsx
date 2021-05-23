@@ -12,7 +12,7 @@ const DesktopNav = ( { data }) => {
         <Box>
             {data.map((page, index) => {
                 return(
-                    <Link 
+                    <Link
                         key={"key", index} 
                         href={`/${page.metadata.id}`} 
                         passhref>
@@ -21,8 +21,9 @@ const DesktopNav = ( { data }) => {
                             className={
                                 activePage !== undefined && page.slug === activePage.slug 
                                 ? 
-                                classes.active : null} 
-                            size="large" 
+                                `${classes["active"]} ${classes["button"]} ` : classes.button} 
+                            size="large"
+                            aria-label={`Naviger til ${page.title}`}  
                             color="secondary">{page.title}
                         </Button>
                     </Link>   
@@ -37,5 +38,8 @@ export default DesktopNav;
 const useStyle = makeStyles({
     active: {
         textDecoration: "underline"
+    },
+    button: {
+        fontSize: "1.3rem"
     }
 })

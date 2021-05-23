@@ -22,6 +22,8 @@ export default function Index( { pageData } ) {
 
   return (
     <Layout home>
+      
+
       <Container 
         className={classes.container} 
         maxWidth={false} 
@@ -48,7 +50,8 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     backgroundImage: "url('./img/forest.jpg')",
     backgroundPositionX: "center",
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    backgroundColor: theme.palette.primary.main,
   },
 
 }))

@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import Button from "@material-ui/core/Button"
+import VolumeMuteIcon from '@material-ui/icons/VolumeMute';
+import { makeStyles } from "@material-ui/core/styles"
 
 const Audio = ({ audioFile }) => {
+    const classes = useStyles();
 
     const player = useRef();
 
@@ -11,7 +14,7 @@ const Audio = ({ audioFile }) => {
     }
 
     return(
-        <Button color="primary" tabIndex={ 0 } onClick={() => playSong()}>
+        <Button className={classes.button} size="large" startIcon={<VolumeMuteIcon/>} variant="contained" tabIndex={ 0 } onClick={() => playSong()}>
             <audio ref={player}/>
             Hør på lyden
         </Button>
@@ -19,3 +22,12 @@ const Audio = ({ audioFile }) => {
 }
 
 export default Audio;
+
+const useStyles = makeStyles(theme => ({
+    button: {
+        backgroundColor: theme.palette.action.main,
+        '&:hover': {
+            border: `3px solid ${theme.palette.action.main}`
+        }
+    }
+}))

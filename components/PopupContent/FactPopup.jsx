@@ -14,7 +14,7 @@ const FactPopup = ({ data, isScreenXl }) => {
     const classes = useStyles();
 
     if (data !== undefined) {
-
+        console.log("data in fact", data);
         const renderFullSlide = () => {
             return(
                 <Box>
@@ -24,7 +24,7 @@ const FactPopup = ({ data, isScreenXl }) => {
                                 layout="fill" 
                                 className={classes.img} 
                                 src={data.image.url} 
-                                alt={image.alt_text}/>
+                                alt={data.image_alt}/>
                         }
                     </Box>
 

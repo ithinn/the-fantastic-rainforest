@@ -18,7 +18,7 @@ function Layout( {children, home, maps, animals, facts, games, memory} ) {
                 <Header page="games"/>
             }
             
-            <main>{children}</main>
+            <main id="main">{children}</main>
         </>
     )
 }

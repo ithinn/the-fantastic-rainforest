@@ -1,6 +1,7 @@
 import IconWithText from "./IconWithText";
 import { usePageContext } from "../../context/PageContext"
 import { Flex } from "reflexbox";
+import Audio from "../Audio";
 
 const InfoBox = ({ data }) => {
     const { activePage } = usePageContext();
@@ -20,13 +21,8 @@ const InfoBox = ({ data }) => {
                     imgAlt="Ikon: Kniv, gaffel og tallerken"
                     text={data.metadata.food}
                 />
-
-                <IconWithText
-                    ariaLabel="Dyrelyd"
-                    imgSrc="/img/icons/speaker-03.svg"
-                    img
-                    audio={data.metadata.sound_url}
-                    />   
+                
+                {data.metadata.sound_url !== "" && <Audio audioFile={data.metadata.sound_url}/>}
             </Flex>
         )
     }

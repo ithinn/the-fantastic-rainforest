@@ -10,6 +10,12 @@ let theme = createMuiTheme({
     secondary: {
       main: '#fff',
     },
+    action: {
+      main: "#c0a320"
+    },
+    navigation: {
+      main: "#80295e"
+    },
     error: {
       main: red.A400,
     },

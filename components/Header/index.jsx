@@ -8,6 +8,8 @@ import { Typography } from "@material-ui/core";
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 import { usePageContext } from "../../context/PageContext"
+import linkStyle from "./index.module.css"
+import { AutorenewTwoTone } from "@material-ui/icons";
 
 const Header = ( { page } ) => {
   
@@ -33,6 +35,9 @@ const Header = ( { page } ) => {
         return(
             
             <Box className={classes.header} as="header">
+                
+                <a className={classes.skip_to_content_link} href="#main">Gå til hovedinnhold</a>
+
                 <div className={classes.overlay}/>
 
                 <Flex as="nav" justifyContent="flex-end" p={3}>
@@ -72,7 +77,7 @@ const Header = ( { page } ) => {
                     </Box>
                 </Flex>
 
-                <Box role="heading" textAlign="center" pb={4}>
+                <Box textAlign="center" pb={4}>
                     <Typography 
                         color="secondary" 
                         variant="h1" 
@@ -132,7 +137,27 @@ const useStyle = makeStyles((theme) => ({
         position: "absolute",
         left: 16,
         top: 16
+    },
+    skip_to_content_link: {
+        background: theme.palette.primary.main,
+        color: theme.palette.secondary.main,
+        fontSize: "1rem",
+        height: "30px",
+        top: 0,
+        left: 0,
+        right: 0,
+        margin: "auto",
+        width: "fit-content",
+        padding: theme.spacing(3),
+        position:"absolute",
+        zIndex: 2,
+        transform: "translateY(-110%)",
+        transition: "transform 0.3s",
+        "&:focus": {
+            transform: "translateY(0%)"
+        }
     }
+  
 }));
 
 

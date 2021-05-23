@@ -9,6 +9,7 @@ const AfterAnimation = ( { pageData, isAnimationComplete, isLargeWindow }) => {
   return(
     <Flex className={`${styles["box"]} ${styles["box1"]} ${styles["fadeIn"]}`}> 
       <Box className={styles.headingWrapper}>
+        <>
         <Typography 
           variant="h3" 
           component="h1" 
@@ -19,6 +20,7 @@ const AfterAnimation = ( { pageData, isAnimationComplete, isLargeWindow }) => {
           variant={isLargeWindow ? "h1" : "h2"}
           component="h2" 
           className={styles.heading}>Regnskogen</Typography>
+        </>  
       </Box>
             
       {isAnimationComplete &&(

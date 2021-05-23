@@ -8,6 +8,7 @@ const CloseBtn = ({ handleClick }) => {
 
     return (
         <IconButton
+            aria-label="Lukk dialog"
             onClick={() => handleClick()}
             className={classes.button}>
         

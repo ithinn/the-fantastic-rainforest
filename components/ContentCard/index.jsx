@@ -10,6 +10,7 @@ import { Box } from "reflexbox";
 const ContentCard = ({ data, id, isCardLink, handleOpen }) => {
     
     const classes = useStyles();
+    console.log("contentcard", data);
 
     const renderCard = () => {
         return(
