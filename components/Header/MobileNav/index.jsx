@@ -1,10 +1,12 @@
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import { Box } from "reflexbox";
 import { useEffect, useState } from "react";
 import MenuIcon from '@material-ui/icons/Menu';
 import { useRouter } from "next/router"
+import Image from "next/image"
+
 
 const MobileNav = ( { data }) => {
     const [anchorEl, setAnchorEl] = useState(false);
@@ -19,18 +21,22 @@ const MobileNav = ( { data }) => {
     }
 
     return(
-        <Box>
-            <IconButton 
+        <Box mt={2} mb={3}>
+            <Button 
                 size="medium" 
-                variant="outlined"
                 color="secondary"
                 aria-controls="menu" 
                 aria-haspopup="true" 
-                onClick={handleClick}>
-            
-                <MenuIcon color="secondary"/>
-                        
-            </IconButton>
+                onClick={handleClick}
+                startIcon={
+                    <Image 
+                        src="/img/icons/ICONS_menu.svg" 
+                        width={40}
+                        alt="ikon: meny" 
+                        height={40}/>
+                }>
+                Meny  
+            </Button>
 
             <Menu
                 id="menu"

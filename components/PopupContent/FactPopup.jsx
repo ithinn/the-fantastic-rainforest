@@ -14,7 +14,7 @@ const FactPopup = ({ data, isScreenXl }) => {
     const classes = useStyles();
 
     if (data !== undefined) {
-        console.log("data in fact", data);
+
         const renderFullSlide = () => {
             return(
                 <Box>
@@ -40,6 +40,7 @@ const FactPopup = ({ data, isScreenXl }) => {
             )
         }
 
+
         const renderMediaSlide = () => {
             return(
                 <Flex className={classes.mediaSlideContainer}>
@@ -53,7 +54,7 @@ const FactPopup = ({ data, isScreenXl }) => {
                             <RoundImage 
                                 isScreenXl={isScreenXl} 
                                 src={data.image.url} 
-                                alt={data.image.alt_text}/>
+                                alt={data.image_alt}/>
                             
                             </>
                         }

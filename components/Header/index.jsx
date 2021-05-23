@@ -135,8 +135,8 @@ const useStyle = makeStyles((theme) => ({
     },
     homeBtn: {
         position: "absolute",
-        left: 16,
-        top: 16
+        left: 26,
+        top: 26
     },
     skip_to_content_link: {
         background: theme.palette.primary.main,
