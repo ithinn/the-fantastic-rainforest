@@ -39,8 +39,18 @@ const Quiz = ({ questions }) => {
 
     //Start forest sounds
     useEffect(() => {
-        playAudio();
+        playAudio("./audio/forestSounds.mp3");
     }, []);
+
+    useEffect(() => {
+        
+        if (isCorrect === true) {
+            playAudio("./audio/quiz/happy.mp3")
+        } else if (isCorrect === false) {
+            playAudio("./audio/quiz/sad.mp3")
+        }
+
+    }, [isCorrect]);
 
 
     //Save the array with questions in state
@@ -88,7 +98,7 @@ const Quiz = ({ questions }) => {
     //Get a random question from the questionList, and show it in a popup.
     //Remove the question from the questionList.
     const getQuestion = () => {
-        
+        playAudio("./audio/quiz/newQuestion.mp3");
         setIsOpen(true);
         const newQuestion = getRandomListItem(questionList);
         setQuestion(newQuestion);
@@ -129,8 +139,8 @@ const Quiz = ({ questions }) => {
     //Play audio file with forest sounds
     const player = useRef();
 
-    const playAudio = () => {
-        player.current.src = "./audio/forestSounds.mp3";
+    const playAudio = (audiofile) => {
+        player.current.src = audiofile;
         player.current.play();
     }
 
