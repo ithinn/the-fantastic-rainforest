@@ -49,7 +49,7 @@ const LandingPageContainer = ({ data, page }) => {
             setPopupContent(popupData[slideIndex - 1]);
             setSlideIndex(slideIndex - 1);
         }
-        window.scrollTo(0, 0);
+        document.getElementById("container").scroll(0,0);
     }
 
     //Close popup
@@ -73,7 +73,8 @@ const LandingPageContainer = ({ data, page }) => {
     return(
         <Container 
             component="section" 
-            disableGutters 
+            disableGutters
+            id="container" 
             className={classes.container} 
             maxWidth={false}>
         
