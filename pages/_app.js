@@ -26,7 +26,7 @@ export default function MyApp(props) {
     <React.Fragment>
       
       <Head>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta name="viewport" lang="no" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <title>Den fantastiske regnskogen</title>
         <link rel="icon" href="/favicon.ico"/>
         <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
