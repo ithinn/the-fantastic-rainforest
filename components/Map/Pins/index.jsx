@@ -26,6 +26,7 @@ const Pins = ({ data, onClick }) => {
                     offsetLeft={-20}>
                     
                     <Room 
+                        tabIndex={0}
                         onClick={() => onClick(location)} 
                         fontSize="large"
                         className={classes.marker}/>
@@ -40,6 +41,7 @@ export default React.memo(Pins);
 
 const useStyles = makeStyles(theme=> ({
     marker: {
-        color: theme.palette.navigation.main
+        color: theme.palette.action.main,
+        
     }
 }))

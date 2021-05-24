@@ -13,7 +13,7 @@ const ClassicPopup = ( {data} ) => {
     const classes = useStyles();
     const { activePage } = usePageContext();
     const isMap = activePage.metadata.id === "maps" ? true : false;
-
+    console.log("CLASSIC", data);
 
     if (data !== undefined) {
         return(
@@ -41,7 +41,8 @@ const ClassicPopup = ( {data} ) => {
                     <Description id="classicDescription" description={isMap ? data.text : data.metadata.description}/>
                 </Box>
 
-                {data.metadata.source_url !== undefined &&<SourceButton url={data.source_url} text={data.source} />}
+                {!isMap && data.metadata.source_url !== undefined && <SourceButton url={data.source_url} text={data.source} />}
+                {isMap && <SourceButton url={data.source_url} text={data.source} />}
             </Flex>
         )
     } else {
