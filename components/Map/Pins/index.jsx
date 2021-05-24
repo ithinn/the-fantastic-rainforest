@@ -1,9 +1,10 @@
 import * as React from "react";
 import { Marker } from "react-map-gl";
 import Room from "@material-ui/icons/Room";
+import { makeStyles } from "@material-ui/core/styles"
 
 const Pins = ({ data, onClick }) => {
-
+    const classes = useStyles();
     const popups = data.metadata.popupcontent;
 
     if (popups.length === 0) {
@@ -27,7 +28,7 @@ const Pins = ({ data, onClick }) => {
                     <Room 
                         onClick={() => onClick(location)} 
                         fontSize="large"
-                        color="error"/>
+                        className={classes.marker}/>
                 </Marker>
             )
         })}
@@ -36,3 +37,9 @@ const Pins = ({ data, onClick }) => {
 }
 
 export default React.memo(Pins);
+
+const useStyles = makeStyles(theme=> ({
+    marker: {
+        color: theme.palette.navigation.main
+    }
+}))

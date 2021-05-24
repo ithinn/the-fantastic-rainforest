@@ -28,10 +28,13 @@ const MapContainer = ({ data }) => {
             <AppBar position="static">
                 <Tabs 
                     value={value} 
-                    indicatorColor="primary"
+                    indicatorColor="secondary"
+                    textColor="secondary"
                     centered={true}
+                    className={classes.tabs}
                     orientation={isLargeScreen ? "horizontal" : "vertical"} 
-                    onChange={handleChange} aria-label={"tabs"}>
+                    onChange={handleChange} 
+                    aria-label={"tabs"}>
                     
                     {tabTitles.map((tabTitle, index) => {
                         return (                        
@@ -63,6 +66,10 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper
     },
+    tabs: {
+        backgroundColor: theme.palette.navigation.main,
+        
+    }
 
     
 }));
