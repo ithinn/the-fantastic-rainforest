@@ -25,14 +25,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       
-      <Head>
-        <meta name="viewport" lang="no" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <title>Den fantastiske regnskogen</title>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />      
-      </Head>
+      
 
       <Page>
         <ThemeProvider theme={theme}>
