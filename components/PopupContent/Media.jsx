@@ -7,15 +7,15 @@ import MapChart from "./../Charts/MapChart";
 const Media = ({ data }) => {
     
     return(
-        <Box>
+        <>
             {data.charttype === "bar" ? 
                 <BarChart data={data}/>
             : 
                 data.charttype === "pie" ? 
                 <PieChart data={data}/>
-            : <MapChart mapStyle={data.map_style}/>
+            : <MapChart ariaLabel={data.image_alt} mapStyle={data.map_style}/>
             }
-        </Box>
+        </>
     )
 }
 

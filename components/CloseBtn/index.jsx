@@ -24,8 +24,8 @@ export default CloseBtn;
 const useStyles = makeStyles({
     button: {
         position: "absolute",
-        top: 10,
-        right: 10,
+        top: 5,
+        right: 5,
         zIndex: 3,
         width: 70,
         height: 70,

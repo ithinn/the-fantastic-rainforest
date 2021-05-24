@@ -62,6 +62,7 @@ const PieChart = ({ data }) => {
             containerProps={{style: {height: '100%', width: "100%"}}} //Responsitivity 
             highcharts={Highcharts}
             options={options}
+            aria-label={data.image_alt}
         />
     )
 }

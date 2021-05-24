@@ -40,7 +40,7 @@ const Header = ( { page } ) => {
 
                 <Flex as="nav" justifyContent="flex-end" p={3}>
                     <Box 
-                        aria-label="link to home" 
+                        aria-label="naviger til forsiden" 
                         className={classes.homeBtn}>
                         
                         <Link href="/" passHref>
@@ -75,10 +75,10 @@ const Header = ( { page } ) => {
                     </Box>
                 </Flex>
 
-                <Box textAlign="center" pb={4}>
+                <Box textAlign="center" role="banner" pb={4}>
                     <Typography 
                         color="secondary" 
-                        variant="h1" 
+                        variant="h1"
                         component="h1"
                         className={classes.heading}>
 
@@ -119,14 +119,18 @@ const useStyle = makeStyles((theme) => ({
     },
     overlay: {
         position: "absolute",
-        height: "40%",
+        height: "80%",
         width: "100%",
         top: 0,
         background: "linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))" 
     },
     heading: {
         textShadow: "0 0 3px #333",
-        fontWeight: 400
+        fontWeight: 400,
+        display: "inline",
+        position: "relative",
+        padding: theme.spacing(1, 3),
+        background: theme.palette.primary.main,
     },
     activeLink: {
         textDecoration: "underline",

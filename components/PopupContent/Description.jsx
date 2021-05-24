@@ -10,7 +10,8 @@ const Description = ({ description }) => {
 
     return(
         <div 
-            className={classes.description} 
+            className={classes.description}
+            aria-label="Beskrivende tekst" 
             dangerouslySetInnerHTML={createMarkup()}>    
         </div>
     )

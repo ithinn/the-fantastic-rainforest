@@ -6,34 +6,23 @@ import ReactMapGl, {
 
 const accessToken = "pk.eyJ1IjoiaXRoaW5uIiwiYSI6ImNrazZrb29taTAzcDYycW52OHAwYWg3OHAifQ.aX82AcqyKytGqXNzF-Ewmw"
 
-const MapChart = ( {mapStyle} ) => {
+const MapChart = ({ mapStyle, ariaLabel }) => {
 
     const [viewport, setViewport] = useState({
-        width: 400,
+        width: 600,
         height: 400,
         zoom: 1
     })
-    const navControlStyle = {
-        right: 10,
-        top: 45
-    }
-
-    const fullScreenStyle = {
-        right: 10,
-        top: 10
-    }
-
+ 
     return(
         <ReactMapGl
             {...viewport}
             attributionControl={false}
             mapStyle={mapStyle}
+            aria-label={ariaLabel}
             mapboxApiAccessToken={accessToken}
             onViewportChange={nextViewport => setViewport(nextViewport)}>
-                    
-            <NavigationControl style={navControlStyle}/>
-               
-            <FullscreenControl style={fullScreenStyle}/>
+
         </ReactMapGl>
     )
 }
