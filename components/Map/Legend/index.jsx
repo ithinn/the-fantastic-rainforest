@@ -26,7 +26,7 @@ const Legend = ({data, handleClick}) => {
                     <Box>
                         <Typography 
                             variant="subtitle2" 
-                            component="h2" 
+                            component="h3" 
                             gutterBottom>
                             {data.metadata.legendheading}
                         </Typography>
@@ -36,7 +36,8 @@ const Legend = ({data, handleClick}) => {
                                 data.metadata.legend.map((item, index) => {
                                     return (
                                         <Flex key={"legend", index} m={2} p={2}>
-                                            <Box 
+                                            <Box
+                                                aria-label="Kvadrat med en farge som tilsvarer en av fargene på kartet" 
                                                 width="20px" 
                                                 height="20px" 
                                                 bg={item.hex} 
@@ -56,7 +57,7 @@ const Legend = ({data, handleClick}) => {
 
                 <Button 
                     color="primary" 
-                    variant="contained" 
+                    variant="outlined" 
                     startIcon={<CancelIcon/>} 
                     onClick={handleClick}>Skjul dette
                 </Button>

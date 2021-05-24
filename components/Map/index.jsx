@@ -13,6 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import SourceButton from "../PopupContent/SourceButton";
 
 const accessToken = "pk.eyJ1IjoiaXRoaW5uIiwiYSI6ImNrazZrb29taTAzcDYycW52OHAwYWg3OHAifQ.aX82AcqyKytGqXNzF-Ewmw"
 
@@ -53,6 +54,7 @@ const Map = ({ data }) => {
     }
 
     const handleClickOnMarker = (data) => {
+        console.log("handleClickOnMarker");
         setPopupContent(data);
         setIsOpen(true);
     }
@@ -74,7 +76,8 @@ const Map = ({ data }) => {
                     <Legend handleClick={toggleLegend} data={data}/> 
                     : 
                     <Button 
-                    variant="contained" 
+                    variant="contained"
+                    color="primary" 
                     startIcon={<HelpOutlineIcon/>} 
                     onClick={toggleLegend}>Hva betyr fargene på kartet?</Button>
                 }
@@ -89,7 +92,7 @@ const Map = ({ data }) => {
                     
                 <NavigationControl style={navControlStyle}/>
                 
-                <Pins data={data} onClick={handleClickOnMarker}/> 
+                <Pins data={data} handleClick={handleClickOnMarker}/> 
 
                 {popupContent && (
                     <Popup isSlideShow={false} handleClose={handleClose} isOpen={isOpen}>
@@ -99,6 +102,8 @@ const Map = ({ data }) => {
         
                 <FullscreenControl style={fullScreenStyle}/>
             </ReactMapGl>
+
+            <SourceButton url={data.metadata.sourceurl} text={data.metadata.sourcetext}/>
         </Container> 
     )
 }
