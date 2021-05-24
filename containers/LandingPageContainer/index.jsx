@@ -49,6 +49,7 @@ const LandingPageContainer = ({ data, page }) => {
             setPopupContent(popupData[slideIndex - 1]);
             setSlideIndex(slideIndex - 1);
         }
+
     }
 
     //Close popup
@@ -60,12 +61,12 @@ const LandingPageContainer = ({ data, page }) => {
 
 
     // WAI-ARIA
-    let popupId;
-    let popupDescription;
+    let ariaId;
+    let ariaDescription;
     
     if (popupContent !== null) {
-        popupId = page === "facts" ? popupContent.heading : popupContent.slug;
-        popupDescription = page === "facts" ? popupContent.text : popupContent.metadata.description;
+        ariaId = page === "facts" ? "#factDescription" : "classicTitle";
+        ariaDescription = page === "facts" ? "#factDescription" : "classicDescription"
     }
     
 
@@ -88,8 +89,8 @@ const LandingPageContainer = ({ data, page }) => {
            })}
 
            <Popup 
-            id={"infoboks: " + popupId}
-            description={popupDescription} 
+            ariaId={ariaId}
+            ariaDescription={ariaDescription}
             handleClose={handleClose}
             handleSlide={input => handleSlide(input)} 
             isLastSlide={isLastSlide} 

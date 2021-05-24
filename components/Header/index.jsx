@@ -97,7 +97,8 @@ const useStyle = makeStyles((theme) => ({
         backgroundImage: "url('./img/forest.jpg')",
         height: "auto",
         width: "100%",
-        position: "relative"
+        position: "relative",
+        backgroundColor: theme.palette.primary.main
     },
     mobile: {
         [theme.breakpoints.down('xs')]: {

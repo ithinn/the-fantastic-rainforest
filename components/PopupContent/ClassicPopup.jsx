@@ -14,6 +14,7 @@ const ClassicPopup = ( {data} ) => {
     const { activePage } = usePageContext();
     const isMap = activePage.metadata.id === "maps" ? true : false;
 
+
     if (data !== undefined) {
         return(
             <Flex className={classes.root}>
@@ -26,7 +27,7 @@ const ClassicPopup = ( {data} ) => {
                     </Flex>
                 
                     <Flex className={classes.itemWrapper}>
-                        <Heading text={data.title}/>
+                        <Heading id="classicTitle" text={data.title}/>
                     </Flex>
 
                     <PhotoCredit 
@@ -37,10 +38,10 @@ const ClassicPopup = ( {data} ) => {
                 <InfoBox data={data}/>
 
                 <Box mt={3} mb={4}>
-                    <Description description={isMap ? data.text : data.metadata.description}/>
+                    <Description id="classicDescription" description={isMap ? data.text : data.metadata.description}/>
                 </Box>
 
-                <SourceButton url={data.source_url} text={data.source} />
+                {data.metadata.source_url !== undefined &&<SourceButton url={data.source_url} text={data.source} />}
             </Flex>
         )
     } else {

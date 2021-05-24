@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const Description = ({ description }) => {
+const Description = ({ description, id }) => {
 
     const classes = useStyles();
 
@@ -9,7 +9,8 @@ const Description = ({ description }) => {
     }
 
     return(
-        <div 
+        <div
+            id={id} 
             className={classes.description}
             aria-label="Beskrivende tekst" 
             dangerouslySetInnerHTML={createMarkup()}>    

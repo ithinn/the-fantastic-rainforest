@@ -62,7 +62,7 @@ const FactPopup = ({ data, isScreenXl }) => {
                     </Flex>
 
                     <Flex className={classes.itemWrapper}>
-                        <Description description={data.text}/>
+                        <Description id="factPopupDescription" description={data.text}/>
                     </Flex>
                 
                     {!data.charttype && 

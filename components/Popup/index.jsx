@@ -11,24 +11,23 @@ import { PlayCircleFilledWhite } from '@material-ui/icons';
 
 const Popup = ({  
     children,
-    description,
+    ariaDescription,
     isFirstSlide, 
     isLastSlide, 
     handleSlide, 
     isSlideShow, 
     handleClose, 
     isOpen, 
-    id }) => {
+    ariaId }) => {
 
- 
     const classes = useStyles();
 
     return (
  
         <Modal
             role="dialog"
-            aria-labelledby={id}
-            aria-describedby={description}
+            aria-labelledby={ariaId}
+            aria-describedby={ariaDescription}
             className={classes.modal}
             open={isOpen}
             onClose={handleClose}
