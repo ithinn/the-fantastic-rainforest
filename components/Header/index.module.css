@@ -12,7 +12,7 @@
     position: absolute;
     z-index: 2;
     transform: translateY(-100%);
-    transition: transform 0.3s;
+    transition: transform 0.3s;     
 }
 
 .skip_to_content_link:focus {

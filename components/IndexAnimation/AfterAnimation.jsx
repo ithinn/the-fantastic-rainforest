@@ -8,7 +8,7 @@ const AfterAnimation = ( { pageData, isAnimationComplete, isLargeWindow }) => {
 
   return(
     <Flex className={`${styles["box"]} ${styles["box1"]} ${styles["fadeIn"]}`}> 
-      <Box className={styles.headingWrapper}>
+      <Box role="banner" className={styles.headingWrapper}>
         <>
         <Typography 
           variant="h3" 

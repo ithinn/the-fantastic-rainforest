@@ -1,17 +1,18 @@
 import Link from "next/link"
 import Button from "@material-ui/core/Button"
-import { makeStyles } from "@material-ui/core/styles"
+import { createMuiTheme, makeStyles } from "@material-ui/core/styles"
 
 const ButtonLink = ({ path, text }) => {
     const classes = useStyle();
 
     return(
         <Link href={`/${path}`} passHref>
-            <Button 
+            <Button
+                aria-label={`Naviger til ${text}`} 
                 variant="contained" 
                 className={classes.button}
                 size="large" 
-                color="primary">{text}
+                >{text}
             </Button>
         </Link>
     )
@@ -19,8 +20,13 @@ const ButtonLink = ({ path, text }) => {
 
 export default ButtonLink;
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
     button: {
-        margin: 10
+        margin: 10,
+        backgroundColor: theme.palette.navigation.main,
+        color: "white",
+        [theme.breakpoints.up("md")]: {
+            fontSize: "1.3rem"
+        }
     }
-});
+}));

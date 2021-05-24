@@ -33,6 +33,8 @@
 .headingWrapper {
     max-width: 90%;
     text-align: center;
+    background-color: #196a73;
+    padding: 1em;
 }
 
 .heading {

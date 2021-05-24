@@ -74,7 +74,6 @@ const LandingPageContainer = ({ data, page }) => {
         <Container 
             component="section" 
             disableGutters
-            id="container" 
             className={classes.container} 
             maxWidth={false}>
         

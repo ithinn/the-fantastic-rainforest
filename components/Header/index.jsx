@@ -8,8 +8,6 @@ import { Typography } from "@material-ui/core";
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 import { usePageContext } from "../../context/PageContext"
-import linkStyle from "./index.module.css"
-import { AutorenewTwoTone } from "@material-ui/icons";
 
 const Header = ( { page } ) => {
   

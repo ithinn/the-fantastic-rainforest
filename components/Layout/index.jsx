@@ -15,6 +15,8 @@ function Layout( {children, home, maps, animals, facts, games, memory, quiz} ) {
         title = "Memory"
     } else if (quiz) {
         title = "Regnskogsquiz"
+    } else if (games) {
+        title = "Regnskogspill"
     } else {
         title = "Den fantastiske regnskogen"
     }

@@ -42,14 +42,13 @@ const Quiz = ({ questions }) => {
         playAudio("./audio/forestSounds.mp3");
     }, []);
 
+    //Start response sounds
     useEffect(() => {
-        
         if (isCorrect === true) {
             playAudio("./audio/quiz/happy.mp3")
         } else if (isCorrect === false) {
             playAudio("./audio/quiz/sad.mp3")
         }
-
     }, [isCorrect]);
 
 

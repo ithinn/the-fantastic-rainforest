@@ -10,7 +10,7 @@ const DuringAnimation = ({ isLargeWindow }) => {
       as="article" 
       className={`${styles["box"]} ${styles["box2"]} ${styles["fadeOut"]}`}>
 
-      <Box maxWidth="90%" textAlign="center">
+      <Box role="banner" maxWidth="90%" textAlign="center">
         <Typography 
           variant="h3"
           component="h1" 
