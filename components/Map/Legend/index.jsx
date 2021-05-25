@@ -13,8 +13,10 @@ const Legend = ({data, handleClick}) => {
     const classes = useStyles();
         
     return(
- 
+        
         <Card className={classes.root}>
+            {data !== undefined &&(
+            
             <CardContent>
                 <Box mb={3}>
                     <Typography component="h2" gutterBottom>
@@ -62,6 +64,7 @@ const Legend = ({data, handleClick}) => {
                     onClick={handleClick}>Skjul dette
                 </Button>
             </CardContent>
+            )}
         </Card>
     )
 };
@@ -74,6 +77,8 @@ const useStyles = makeStyles(theme => ({
         minWidth: 275,
         width: "20%",
         margin: 10,
+        position: "relative",
+        overflow: "auto",
         zIndex: 3,
         [theme.breakpoints.down("sm")]: {
             width: "100%",
