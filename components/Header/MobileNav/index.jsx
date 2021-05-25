@@ -21,7 +21,7 @@ const MobileNav = ( { data }) => {
     }
 
     return(
-        <Box mt={2} mb={3}>
+        <Box>
             <Button 
                 size="medium" 
                 color="secondary"

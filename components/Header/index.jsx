@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import { getCosmicData, bucket, getDataForThisPage } from "../../src/helpers/dataHelpers";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router"
 import { Flex, Box } from "reflexbox";
 import { makeStyles } from "@material-ui/core/styles"
 import { Typography } from "@material-ui/core";
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 import { usePageContext } from "../../context/PageContext"
-import { MicNoneTwoTone } from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
+import { Router } from "@material-ui/icons";
 
 const Header = ({ page }) => {
     
-    console.log("page in header", page);
-
     const classes = useStyle();
+    const router = useRouter();
     const { activePage, defineActivePage } = usePageContext()
     const [allPages, setAllPages] = useState([])
     
@@ -41,31 +42,23 @@ const Header = ({ page }) => {
 
                 <div className={classes.overlay}/>
 
-                <Flex as="nav" justifyContent="flex-end" p={3}>
-                    <Box 
-                        aria-label="naviger til forsiden" 
-                        className={classes.homeBtn}>
-                        
-                        <Link href="/" passHref>
-                            <a>
-                                <Flex 
-                                    justifyContent="center" 
-                                    flexDirection="column" 
-                                    alignItems="center">
-                                    
-                                    <Image 
-                                        src={"/img/icons/home_home.svg"} 
-                                        width={40} 
-                                        height={40} 
-                                        alt={"logo: en hvit sirkel med et blågrønt tre inni"}/>
-                                    <Typography 
-                                        color="secondary" 
-                                        variant="overline">Hjem
-                                    </Typography>
-                                </Flex>
-                            </a>
-                        </Link>
-                    </Box>
+                <Flex as="nav" justifyContent="space-between" p={3}>
+                 
+                        <Button
+                            aria-label="Naviger til forsiden" 
+                            size="medium"
+                            className={classes.homeButton} 
+                            color="secondary"
+                            onClick={() => {router.push("/")}}
+                            startIcon={
+                                <Image 
+                                    src="/img/icons/home_home.svg" 
+                                    width={40}
+                                    alt="ikon: meny" 
+                                    height={40}/>
+                            }>
+                            Hjem  
+                        </Button>
 
                     <Box>
                         <Box className={classes.desktop}>
@@ -138,10 +131,10 @@ const useStyle = makeStyles((theme) => ({
     activeLink: {
         textDecoration: "underline",
     },
-    homeBtn: {
-        position: "absolute",
-        left: 26,
-        top: 26
+    homeButton: {
+        [theme.breakpoints.up("sm")]: {
+            fontSize: "1.3rem"
+        }
     },
     skip_to_content_link: {
         background: theme.palette.primary.main,
