@@ -48,7 +48,6 @@ const Map = ({ data }) => {
         }
     }, [windowSize]);
 
-
     const toggleLegend = () => {
         setIsLegend(!isLegend);
     }
@@ -89,20 +88,34 @@ const Map = ({ data }) => {
                 mapboxApiAccessToken={accessToken}
                 onViewportChange={nextViewport => setViewport(nextViewport)}>
                     
-                <NavigationControl className={classes.controls} style={navControlStyle}/>
+                <NavigationControl 
+                    className={classes.controls} 
+                    style={navControlStyle}/>
                 
-                <Pins data={data} handleClick={handleClickOnMarker}/> 
+                <Pins 
+                    data={data} 
+                    handleClick={handleClickOnMarker}/> 
 
                 {popupContent && (
-                    <Popup isSlideShow={false} handleClose={handleClose} isOpen={isOpen}>
+                    <Popup 
+                        isSlideShow={false} 
+                        handleClose={handleClose} 
+                        isOpen={isOpen}>
+
                         <PopupContent data={popupContent} />
                     </Popup>
                 )}   
         
-                <FullscreenControl className={classes.controls} style={fullScreenStyle}/>
+                <FullscreenControl 
+                    className={classes.controls} 
+                    style={fullScreenStyle}/>
+
             </ReactMapGl>
 
-            <SourceButton url={data.metadata.sourceurl} text={data.metadata.sourcetext}/>
+            <SourceButton 
+                url={data.metadata.sourceurl} 
+                text={data.metadata.sourcetext}/>
+
         </Container> 
     )
 }
@@ -113,6 +126,7 @@ const useStyles = makeStyles(theme => ({
     container: {
         position: "relative",
         width: "100%",
+        overflow: "hidden"
     },
     legendWrapper: {
         position: "absolute",
