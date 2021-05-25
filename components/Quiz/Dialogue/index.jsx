@@ -46,7 +46,7 @@ const Dialogue = ({
         return(
             <>
                 <Flex className={classes.feedbackWrapper} color={isCorrect ? "green" : "#333"}>
-                    <Typography className={classes.feedbackText} variant="h5">
+                    <Typography className={classes.feedbackText} component="h1" variant="h5">
                         {feedbackBubble}
                     </Typography>
                 </Flex>

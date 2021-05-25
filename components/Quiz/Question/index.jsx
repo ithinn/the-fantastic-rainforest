@@ -9,10 +9,14 @@ import FormLabel from '@material-ui/core/FormLabel';
 import { Box, Flex } from "reflexbox";
 import Image from "next/image";
 import { makeStyles } from "@material-ui/core/styles"
+import { usePageContext } from "../../../context/PageContext";
+
 
 const Question = ( {getAnswer, data} ) => {
     const [value, setValue] = useState(null);
     const [error, setError] = useState(false);
+    const { windowSize } = usePageContext();
+    const isScreenXl = windowSize.width > 1900 ? true : false;
     const classes = useStyles();
 
 
@@ -34,23 +38,24 @@ const Question = ( {getAnswer, data} ) => {
         setValue(target.value);
     }
 
+    
     return (
         <>
         {data !== null &&(
-            <Box height="100%">
+            <Flex className={classes.questionWrapper}>
 
                 <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
                     <Box p={3}>
                         <Image
                             src={data.metadata.image.url}
                             className={classes.roundImg}
-                            width={200}
-                            height={200}
+                            width={isScreenXl ? 350 : 250}
+                            height={isScreenXl ? 350 : 250}
                             alt={data.metadata.image_alt}/>
                     </Box>
 
-                    <Box maxWidth="300px" textAlign="center" p={3}>
-                        <Typography variant="h5" component="h2">
+                    <Box className={classes.textWrapper}>
+                        <Typography variant={isScreenXl ? "h4" : "h5"} component="h2">
                             {data.metadata.question }
                         </Typography>
                     </Box>
@@ -58,29 +63,33 @@ const Question = ( {getAnswer, data} ) => {
                 
                 <Box p={3}>
                     {error &&(
-                        <Typography variant="h6" component="p" color="error">
+                        <Typography role="alert" aria-atomic="true" className={classes.error} variant="h6" component="p" color="error">
                             Du må velge ett alternativ
                         </Typography>
                     )}
 
                     <form onSubmit={handleSubmit}>
                         <Flex flexWrap="wrap" justifyContent="center">
-                            <Flex justifyContent="center" width="25em" maxWidth="300px">
+                            <Flex className={classes.altWrapper}>
                                 <FormControl>
-                                    <FormLabel component="legend">Velg svar:</FormLabel>
-                                    <Box mt={3}>
+                                    <FormLabel className={classes.legend} component="legend">Velg svar:</FormLabel>
+                                    <Box>
                                         <RadioGroup 
                                             aria-label="alternatives" 
-                                            name="alternatives" 
+                                            name="alternatives"
+                                            id="alternatives"
                                             onChange={handleChange}>
 
                                             {data.metadata.alternatives.map(alt => {
                                                 return(
                                                     <FormControlLabel 
                                                         key={"alternative", alt.number} 
-                                                        value={alt.number} 
-                                                        control={<Radio color="primary"/>} 
-                                                        label={alt.alternative}/>
+                                                        value={alt.number}
+                                                        className={classes.alternative} 
+                                                        control={
+                                                            <Radio className={error ? classes.radioError : classes.radio} color="primary"/>
+                                                        } 
+                                                        label={<Typography variant="h6" component="p">{alt.alternative}</Typography>}/>
                                                 )
                                             })}
                                         </RadioGroup>
@@ -104,7 +113,7 @@ const Question = ( {getAnswer, data} ) => {
                         </Flex>
                     </form>
                 </Box>
-            </Box>
+            </Flex>
         )}
         </>
     )
@@ -112,9 +121,43 @@ const Question = ( {getAnswer, data} ) => {
 
 export default Question;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+    questionWrapper: {
+        height: "100%",
+        flexDirection: "column",
+        alignItems: "center",
+        [theme.breakpoints.up("md")]: {
+            justifyContent: "center"
+        }
+
+    },
+    textWrapper: {
+        textAlign: "center",
+        maxWidth: 600,
+        margin: theme.spacing(5)
+    },
+    error: {
+        textAlign: "center"
+    },
+    radio: {
+        marginRight: theme.spacing(2)
+    },
+    radioError: {
+        border: `2px solid ${theme.palette.error.main}`,
+        marginRight: theme.spacing(2),
+    },
+    alternative: {
+        margin: theme.spacing(2)
+    },
+    legend: {
+        textAlign: "center"
+    },
     roundImg: {
         borderRadius: "50%",
         objectFit: "cover",
+        [theme.breakpoints.up("xl")]: {
+            width: 300,
+            height: 300,
+        }
     }
-})
+}));

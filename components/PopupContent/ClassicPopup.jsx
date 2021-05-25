@@ -9,7 +9,7 @@ import SourceButton from "./SourceButton"
 import InfoBox from "./InfoBox";
 
 
-const ClassicPopup = ( {data} ) => {
+const ClassicPopup = ({ data, isScreenXl }) => {
     const classes = useStyles();
     const { activePage } = usePageContext();
     const isMap = activePage.metadata.id === "maps" ? true : false;
@@ -20,7 +20,8 @@ const ClassicPopup = ( {data} ) => {
                 <Flex className={classes.imgAndHeadingWrapper}>
                     
                     <Flex className={classes.itemWrapper}>
-                        <RoundImage 
+                        <RoundImage
+                            isScreenXl={isScreenXl} 
                             src={isMap ? data.image.url : data.metadata.image.url} 
                             alt={isMap ? data.image_alt : data.metadata.image_alt}/>
                     </Flex>

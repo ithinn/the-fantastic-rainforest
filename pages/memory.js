@@ -35,6 +35,8 @@ const Memory = () => {
     const [isCompleted, setIsCompleted] = useState(false);
     const [flippedCards, setFlippedCards] = useState([]);
     const [numberOfPairs, setNumberOfPairs] = useState(0);
+    const [statusMessage, setStatusMessage] = useState("")
+    const [initialMessage, setInitialMessage] = useState("")
     const router = useRouter();
     const { windowSize } = usePageContext();
 
@@ -51,9 +53,11 @@ const Memory = () => {
             if (status) {
                 setNumberOfPairs(numberOfPairs + 1);
                 setFlippedCards([]);
+                setStatusMessage("Riktig, du fikk et par")
             } else {
                 timer = setTimeout(() => {
                     flipCardBack();
+                    setStatusMessage("De var ikke like, prøv igjen")
                     setFlippedCards([])
                 }, 1500)
             }
@@ -73,21 +77,23 @@ const Memory = () => {
         const cardsToPlayWith = randomOrder(cards, number);
         setCardsInPlay(cardsToPlayWith);
         setIsPlaying(true);
+        setInitialMessage(`${cardsToPlayWith.length} memorykort med baksiden opp`)
     }
 
     //Sets the isFlipped-prop of the selected card to true
     //Adds the selected card to the flippedCards-array
     const flipCard = (event) => {
+        setInitialMessage("");
 
         if (flippedCards.length < 2) {
-            let index = getIndex(cardsInPlay, event.target.title);
+            let index = getIndex(cardsInPlay, event.target.id);
     
             let newArray = [...cardsInPlay];
             newArray[index] = {...newArray[index], isFlipped: true};
 
             setCardsInPlay(newArray);
 
-            let list = addToList(flippedCards, event.target.title )
+            let list = addToList(flippedCards, event.target.id )
             setFlippedCards(list);
         } 
     }
@@ -118,12 +124,26 @@ const Memory = () => {
             <meta name="description" content="Spill det klassiske memory-spillet med motiver fra regnskogen."/>
         </Head>
 
+        <div class={classes.hidden} role="alert" aria-atomic="true">
+            {initialMessage}
+            {statusMessage}
+        </div>
+
         <Container 
             maxWidth={false} 
             disableGutters 
             className={classes.root} 
             component="section">
            
+            {isPlaying && 
+                <Button
+                    className={classes.restartBtn} 
+                    variant="outlined"
+                    tabIndex={0}
+                    startIcon={<RefreshIcon/>}
+                    color="secondary" 
+                    onClick={handleRestart}>Begynn på nytt</Button>
+            }             
             <CloseBtn handleClick={() => {router.push("/games")}}/>
             
             <Typography 
@@ -138,10 +158,15 @@ const Memory = () => {
                 <Flex className={classes.chooseNumbCardsWrapper}>
                     <Typography 
                         variant="overline"
-                        color="primary" 
-                        component="h2">Hvor mange kort du vil spille med?</Typography>
+                        color="primary"
+                        id="howManyCards" 
+                        component="h2">Hvor mange kort vil du spille med?</Typography>
 
-                    <ButtonGroup className={classes.buttonGroup} color="primary" variant="contained" >
+                    <ButtonGroup 
+                        className={classes.buttonGroup} 
+                        color="primary" 
+                        variant="contained"
+                        aria-labelledby="howManyCards">
                         <Button onClick={() => drawCards(12)}id="12" >12</Button>
                         <Button onClick={() => drawCards(16)}id="16" >16</Button>
                         <Button onClick={() => drawCards(20)}id="20" >20</Button>
@@ -150,6 +175,7 @@ const Memory = () => {
             )}
 
             {isPlaying && !isCompleted && <Box className={classes.overlay}/>}
+              
 
             {cardsInPlay.length > 0 && (
                 <Flex className={classes.cardWrapper}>
@@ -157,13 +183,15 @@ const Memory = () => {
                         return (
                             <Card 
                             key={index + card.id} 
-                            id={card.id} 
+                            id={card.id}
+                            
                             className={classes.card}                            
                             onClick={event => flipCard(event)}>
                             
                             {card.isFlipped ? 
                                 <CardActionArea>    
-                                    <CardMedia 
+                                    <CardMedia
+                                        aria-label="Memorykort - bildet vises"  
                                         className={classes.media} 
                                         image={card.url}/>
                                     <CardContent className={classes.content}/>
@@ -171,9 +199,11 @@ const Memory = () => {
                                 :
                                 <CardActionArea>
                                     <CardMedia 
+                                        aria-label="klikk for å snu"  
                                         className={classes.media} 
                                         image=".././img/memory/unflipped2-02.jpg" 
-                                        title={card.id}/>
+                                        id={card.id}
+                                        />
                                     <CardContent className={classes.content}/>
                                 </CardActionArea>
                             }
@@ -183,15 +213,7 @@ const Memory = () => {
                 </Flex>
             )}
 
-            {isPlaying && 
-                <Button
-                    className={classes.restartBtn} 
-                    variant="outlined"
-                    startIcon={<RefreshIcon/>}
-                    color="secondary" 
-                    onClick={handleRestart}>Begynn på nytt</Button>
-            }
-
+        
             <Popup isOpen={isCompleted} handleClose={handleRestart}>
                 <Flex className={classes.popupWrapper}>
                     <Typography variant="h2">
@@ -226,7 +248,8 @@ const useStyles = (makeStyles(theme => ({
         position: "relative",
         padding: theme.spacing(8, 3),
         backgroundImage: "url('./img/forest_fog.jpg')",
-        backgroundSize: "cover"
+        backgroundSize: "cover",
+        backgroundColor: theme.palette.primary.main,
     },
     popupWrapper: {
         textAlign: "center",
@@ -318,5 +341,13 @@ const useStyles = (makeStyles(theme => ({
         zIndex: 1,
         top: 10,
         left: 10
+    },
+    hidden: {
+        height: 1,
+        width: 1,
+        overflow: "hidden",
+        padding: 0,
+        position: "absolute"
     }
+
 })))

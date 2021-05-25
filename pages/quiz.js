@@ -139,6 +139,8 @@ const Quiz = ({ questions }) => {
         player.current.play();
     }
 
+    const ariaStatus = isPlaying ? isCorrect ? `Rikig svar, level ${level} av 7` : `Feil svar, level ${level} av 7` : "";
+
 
     //Give the user a chance to quit when it is not longer possible to complete the game 
     if (questionList !== null && (7 - level) > questionList.length) {
@@ -158,13 +160,19 @@ const Quiz = ({ questions }) => {
             <title>Den fantastiske regnskogen - Quiz</title>
             <meta name="description" content="Quiz-spill der du skal hjelpe apen Nyani med å klatre til toppen av treet ved å svare riktig på spørsmål"/>
         </Head>
+
+        <div className={classes.hidden} role="alert" aria-atomic="true">
+            {ariaStatus}
+        </div>
+
         <Container 
             maxWidth={false} 
-            disableGutters 
+            disableGutters
+            role="main"
             className={classes.container} 
             component="section"> 
             
-            <audio ref={player}/>
+            <audio aria-label="Glad lyd hvis du har klart et spørsmål, irritert lyd hvis du ikke klarte det." ref={player}/>
 
             <Animation isCorrect={isCorrect} level={level}>
                 
@@ -220,7 +228,7 @@ export const getStaticProps = async () => {
     return {props: { questions }}
 }
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
     container: {
         width: "100%",
         height: "100vh",
@@ -228,9 +236,22 @@ const useStyle = makeStyles({
     },
     monkey: {
         position: "absolute",
-        top: 10,
-        left: 16,
         width: 70,
         textAlign: "center",
+        [theme.breakpoints.down("xs")]: {
+            bottom: 10,
+            right: 16,
+        },
+        [theme.breakpoints.up("sm")]: {
+            top: 10,
+            left: 16,
+        }
     },
-});
+    hidden: {
+        height: 1,
+        width: 1,
+        overflow: "hidden",
+        padding: 0,
+        position: "absolute"
+    }
+}));
