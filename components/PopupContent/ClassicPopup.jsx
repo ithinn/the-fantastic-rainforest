@@ -57,6 +57,10 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3),
         flexDirection: "column",
         alignItems: "center",
+        [theme.breakpoints.up("xl")]: {
+            width: "50%",
+            left: "25%"
+        }
     },
     imgAndHeadingWrapper: {
         marginTop: theme.spacing(3),
@@ -64,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         justifyContent: "center",
         flexWrap: "wrap"
+        
     },
     itemWrapper: {
         padding: theme.spacing(3),
@@ -80,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "1.5rem",
         [theme.breakpoints.up("md")]: {
             width: "60%",
+        },
+        [theme.breakpoints.up("xl")]: {
+            width: "100%",
         }
     }
 }));

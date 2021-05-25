@@ -57,7 +57,7 @@ const Header = ({ page }) => {
                                     alt="ikon: meny" 
                                     height={40}/>
                             }>
-                            Hjem  
+                            Forsiden  
                         </Button>
 
                     <Box>

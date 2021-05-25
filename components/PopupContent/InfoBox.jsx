@@ -37,6 +37,7 @@ const InfoBox = ({ data }) => {
     const renderMapInfobox = () => {
         return (
             <Flex flexWrap="wrap" justifyContent="center" alignItems="flex-start">
+                <Box>
                 <IconWithText
                 ariaLabel="Geografisk område"
                 imgSrc="/img/icons/globe-02.svg"
@@ -49,6 +50,9 @@ const InfoBox = ({ data }) => {
                     imgAlt="Ikon: To trær, ett stort og ett lite"
                     text={data.size}
                 />
+                </Box>
+
+                <Box>
                 <IconWithText
                     ariaLabel="Folkegrupper"
                     imgSrc="/img/icons/ICONS_people.svg"
@@ -61,6 +65,7 @@ const InfoBox = ({ data }) => {
                     imgAlt="Ikon: Et tørt og ødelagt tre"
                     text={data.threats}
                 />
+                </Box>
             </Flex>
         )
     }
