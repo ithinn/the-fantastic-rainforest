@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import { Box } from "reflexbox";
 
 const CloseBtn = ({ handleClick }) => {
+    
     const classes = useStyles();
 
     return (
@@ -12,7 +13,10 @@ const CloseBtn = ({ handleClick }) => {
             onClick={() => handleClick()}
             className={classes.button}>
         
-            <Box width="70px" height="70px">
+            <Box 
+                width="70px" 
+                height="70px">
+
                 <Icon/>
             </Box>
         </IconButton>

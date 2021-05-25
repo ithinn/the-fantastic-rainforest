@@ -4,11 +4,13 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsReact from 'highcharts-react-official'
 import { useTheme } from "@material-ui/core/styles";
 
+//https://github.com/highcharts/highcharts-react#highcharts-with-nextjs
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts)
 }
 
 const BarChart = ({ data }) => {
+
     const { colorArray } = useTheme()
     const [options, setOptions] = useState(null);
 
@@ -52,7 +54,7 @@ const BarChart = ({ data }) => {
 
 
     if (options === undefined) {
-        return (<h2>Noe gikk galt, last siden på nytt</h2>)
+        return (<h2>Noe gikk galt, prøv å laste inn siden på nytt</h2>)
     }
 
     return(

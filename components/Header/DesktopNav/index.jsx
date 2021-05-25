@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import { usePageContext } from "../../../context/PageContext"
 
 const DesktopNav = ( { data }) => {
+
     const classes = useStyle();
     const { activePage } = usePageContext();
 
@@ -21,7 +22,9 @@ const DesktopNav = ( { data }) => {
                             className={
                                 activePage !== undefined && page.slug === activePage.slug 
                                 ? 
-                                `${classes["active"]} ${classes["button"]} ` : classes.button} 
+                                `${classes["active"]} ${classes["button"]} ` 
+                                : 
+                                classes.button} 
                             size="large"
                             aria-label={`Naviger til ${page.title}`}  
                             color="secondary">{page.title}

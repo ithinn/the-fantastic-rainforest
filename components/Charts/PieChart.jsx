@@ -4,11 +4,13 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsReact from 'highcharts-react-official'
 import { useTheme } from "@material-ui/core/styles"
 
+//https://github.com/highcharts/highcharts-react#highcharts-with-nextjs
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts)
 }
 
 const PieChart = ({ data }) => {
+
     const [options, setOptions] = useState(null);
     const { colorArray } = useTheme();
 
@@ -46,7 +48,6 @@ const PieChart = ({ data }) => {
                     data: [...data.data]
                 }
             ],
-
         }
         
         setOptions(newOptions);

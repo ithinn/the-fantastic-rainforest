@@ -14,8 +14,15 @@ const Audio = ({ audioFile }) => {
     }
 
     return(
-        <Button className={classes.button} size="large" startIcon={<VolumeMuteIcon/>} variant="contained" tabIndex={ 0 } onClick={() => playSong()}>
+        <Button 
+            className={classes.button} 
+            size="large" 
+            startIcon={<VolumeMuteIcon/>} 
+            variant="contained" tabIndex={ 0 } 
+            onClick={() => playSong()}>
+
             <audio ref={player}/>
+            
             Hør på lyden
         </Button>
     )

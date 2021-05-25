@@ -2,8 +2,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { Box } from "reflexbox";
-import { useEffect, useState } from "react";
-import MenuIcon from '@material-ui/icons/Menu';
+import { useState } from "react";
 import { useRouter } from "next/router"
 import Image from "next/image"
 
@@ -47,18 +46,18 @@ const MobileNav = ( { data }) => {
 
                 {data !== null && data !== undefined &&(
                     <div>
-                    {data.map((item, index) => {
-                        return(
-                                
-                            <MenuItem key={item, index} onClick={() => {router.push(`/${item.metadata.id}`)}}>
-                                {item.title}
-                            </MenuItem>
-                                 
-                        )
-                    })}
+                        {data.map((item, index) => {
+                            return(
+                                <MenuItem 
+                                    key={item, index} 
+                                    onClick={() => {router.push(`/${item.metadata.id}`)}}>
+
+                                    {item.title}
+                                </MenuItem>     
+                            )
+                        })}
                     </div>
                 )}  
-                
             </Menu>
         </Box>
     )

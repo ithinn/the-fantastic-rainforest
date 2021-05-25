@@ -34,8 +34,8 @@ const Header = ({ page }) => {
 
     //Render header for all pages except index.js
     if (page !== "home") {
+        
         return(
-            
             <Box className={classes.header} as="header">
                 
                 <a className={classes.skip_to_content_link} href="#main">Gå til hovedinnhold</a>

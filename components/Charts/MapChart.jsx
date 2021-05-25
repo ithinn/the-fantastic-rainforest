@@ -7,6 +7,7 @@ import { getMapLegend } from "../../src/helpers/mapHelpers";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "reflexbox";
 
+//Public token from Mapbox
 const accessToken = "pk.eyJ1IjoiaXRoaW5uIiwiYSI6ImNrazZrb29taTAzcDYycW52OHAwYWg3OHAifQ.aX82AcqyKytGqXNzF-Ewmw"
 
 const MapChart = ({ data, ariaLabel }) => {
@@ -20,14 +21,16 @@ const MapChart = ({ data, ariaLabel }) => {
     })
     const classes = useStyles();
 
+    //Get all the maps from Cosmic
     useEffect(async () => {
         const allMaps = await getCosmicData(bucket, "maps", "title,slug,metadata");
-        console.log("allmaps", allMaps);
         setMapData(allMaps)
     }, [])
 
+    //Store data from the Cosmic map object for this particular map that is rendered
     const thisMap = getMapLegend(data, mapData);
 
+    //Show/hide legend
     const toggleLegend = () => {
         setIsLegend(!isLegend)
     };
@@ -53,7 +56,9 @@ const MapChart = ({ data, ariaLabel }) => {
 
             <Box className={classes.legendWrapper}>
                 {isLegend && 
-                    <Legend data={thisMap} handleClick={toggleLegend} />
+                    <Legend 
+                        data={thisMap} 
+                        handleClick={toggleLegend} />
                 }
             </Box>
         </ReactMapGl>
