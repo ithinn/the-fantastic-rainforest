@@ -11,6 +11,7 @@ import {
     feedback } from "../src/helpers/gameHelpers";
 import { makeStyles } from "@material-ui/core/styles"
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Box } from "reflexbox"
 import Animation from "../components/Quiz/Animation";
@@ -18,6 +19,7 @@ import Popup from "../components/Popup";
 import Question from "../components/Quiz/Question";
 import Dialogue from "../components/Quiz/Dialogue";
 import CloseBtn from "../components/CloseBtn";
+import SpeakerBtn from "../components/SpeakerBtn";
 import Confetti from "react-confetti";
 import Error from "../components/Quiz/Error";
 
@@ -32,21 +34,12 @@ const Quiz = ({ questions }) => {
     const [question, setQuestion] = useState(null);
     const [questionList, setQuestionList] = useState(null);
     const [feedbackBubble, setFeedbackBubble] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
+    const [isAudio, setIsAudio] = useState(true)
     const router = useRouter();
     const { windowSize } = usePageContext();
     const classes = useStyle();
     
-
-    //Play response sounds
-    useEffect(() => {
-        if (isCorrect === true) {
-            playAudio("./audio/quiz/happy.mp3")
-        } else if (isCorrect === false) {
-            playAudio("./audio/quiz/sad.mp3")
-        }
-    }, [isCorrect]);
-
+    //--------------------------------------------------------------------------------useEffects
 
     //Save the array with questions in state
     useEffect(() => {
@@ -83,6 +76,19 @@ const Quiz = ({ questions }) => {
         }
     }, [level]);
 
+
+    //Play response sounds
+    useEffect(() => {
+        if (isAudio) {
+            if (isCorrect === true) {
+                playAudio("./audio/quiz/happy.mp3")
+            } else if (isCorrect === false) {
+                playAudio("./audio/quiz/sad.mp3")
+            }
+        }
+    }, [isCorrect]);
+
+    //-------------------------------------------------------------------------------Game functions
     
     const startGame = () => {
         setIsPlaying(true);
@@ -93,7 +99,8 @@ const Quiz = ({ questions }) => {
     //Get a random question from the questionList, and show it in a popup.
     //Remove the question from the questionList.
     const getQuestion = () => {
-        playAudio("./audio/quiz/newQuestion.mp3");
+        isAudio ? playAudio("./audio/quiz/newQuestion.mp3") : null;
+
         setIsOpen(true);
         const newQuestion = getRandomListItem(questionList);
         setQuestion(newQuestion);
@@ -104,9 +111,10 @@ const Quiz = ({ questions }) => {
         setIsCorrect(null);
     }
 
-    //Checks if the user has answered, if the answer is correct, 
-    //and defines appropriate feedback from the monkey
+    //Check if the user has answered, if the answer is correct, 
+    //and define appropriate feedback from the monkey
     const answerQuestion = ( answer ) => {
+        
         if (answer !== null) {
             const correct = isItCorrect(
                 answer, 
@@ -115,10 +123,17 @@ const Quiz = ({ questions }) => {
 
             setIsOpen(false);
             setIsCorrect(correct);
-            const monkeysFeedback = correct ? getRandomListItem(feedback.quizTrue) : getRandomListItem(feedback.quizFalse);
+
+            const monkeysFeedback = correct ? 
+                    getRandomListItem(feedback.quizTrue) 
+                : 
+                    getRandomListItem(feedback.quizFalse);
+
             setFeedbackBubble(monkeysFeedback);
         }
     }
+
+    //---------------------------------------------------.---------------------Navigation and audio
 
     //Close popup window
     const handleClose = () => {
@@ -130,8 +145,11 @@ const Quiz = ({ questions }) => {
         router.push("/games");
     }
 
+    const handleAudio = () => {
+        setIsAudio(!isAudio);
+    }
 
-    //Play audio file with forest sounds
+    //Audio player
     const player = useRef();
 
     const playAudio = (audiofile) => {
@@ -139,7 +157,14 @@ const Quiz = ({ questions }) => {
         player.current.play();
     }
 
-    const ariaStatus = isPlaying ? isCorrect ? `Rikig svar, level ${level} av 7` : `Feil svar, level ${level} av 7` : "";
+    //-------------------------------------------------------------------WAI-ARIA and error handling
+
+    //Give users with screen reader feedback after answering question
+    const ariaStatus = isPlaying && isCorrect 
+        ? 
+            `Rikig svar, level ${level} av 7` 
+        : 
+            `Feil svar, level ${level} av 7`;
 
 
     //Give the user a chance to quit when it is not longer possible to complete the game 
@@ -153,15 +178,21 @@ const Quiz = ({ questions }) => {
         )
     }
 
+    //---------------------------------------------------------------------------------------Render
     
     return (
         <>
         <Head>
             <title>Den fantastiske regnskogen - Quiz</title>
-            <meta name="description" content="Quiz-spill der du skal hjelpe apen Nyani med å klatre til toppen av treet ved å svare riktig på spørsmål"/>
+            <meta 
+                name="description" 
+                content="Quiz-spill der du skal hjelpe apen Nyani med å klatre til toppen av treet ved å svare riktig på spørsmål"/>
         </Head>
 
-        <div className={classes.hidden} role="alert" aria-atomic="true">
+        <div 
+            className={classes.hidden} 
+            role="alert" 
+            aria-atomic="true">
             {ariaStatus}
         </div>
 
@@ -172,11 +203,17 @@ const Quiz = ({ questions }) => {
             className={classes.container} 
             component="section"> 
             
-            <audio aria-label="Glad lyd hvis du har klart et spørsmål, irritert lyd hvis du ikke klarte det." ref={player}/>
+            <audio 
+                aria-label="Glad lyd hvis du har klart et spørsmål, irritert lyd hvis du ikke klarte det." 
+                ref={player}/>
 
-            <Animation isCorrect={isCorrect} level={level}>
+            <Animation 
+                isCorrect={isCorrect} 
+                level={level}>
                 
                 <CloseBtn handleClick={handleClick}/>
+                <SpeakerBtn handleClick={handleAudio} isAudio={isAudio}/>
+                
                 <Dialogue 
                     handleStart={startGame}
                     isPlaying={isPlaying} 
@@ -253,5 +290,10 @@ const useStyle = makeStyles(theme => ({
         overflow: "hidden",
         padding: 0,
         position: "absolute"
+    },
+    audioBtn: {
+        position: "absolute",
+        bottom: 10,
+        left: 16
     }
 }));

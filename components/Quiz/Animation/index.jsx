@@ -10,7 +10,6 @@ const Animation = ({level, children }) => {
     useEffect(() => {
         if (level !== 0) {
             const bg = `${classes["root"]} ${classes[`bg${level}`]}`
-            
             setClassBg(bg);
         }
     }, [level])
