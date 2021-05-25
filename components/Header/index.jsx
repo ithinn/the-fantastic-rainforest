@@ -8,6 +8,7 @@ import { Typography } from "@material-ui/core";
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 import { usePageContext } from "../../context/PageContext"
+import { MicNoneTwoTone } from "@material-ui/icons";
 
 const Header = ({ page }) => {
     
@@ -133,7 +134,6 @@ const useStyle = makeStyles((theme) => ({
         display: "inline",
         position: "relative",
         padding: theme.spacing(1, 3),
-        background: theme.palette.primary.main,
     },
     activeLink: {
         textDecoration: "underline",

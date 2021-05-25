@@ -92,16 +92,8 @@ const useStyles = makeStyles(theme => ({
         margin: "0 auto"
     },
     paper: {
-        [theme.breakpoints.down("sm")]: {
-            width: "100%",
-            height: "100%"
-        },
-        [theme.breakpoints.up("md")]: {
-            width: "100%",
-            height: "100%"
-        },
-        
-        height: "90vh",
+        width: "100%",
+        height: "100%",
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(2),
         overflow: "auto",

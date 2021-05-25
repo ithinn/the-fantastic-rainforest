@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import ContentCard from "../../components/ContentCard";
 import Container from "@material-ui/core/Container";
 import Popup from "../../components/Popup";
@@ -105,11 +105,12 @@ const LandingPageContainer = ({ data, page }) => {
 
 export default LandingPageContainer;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     container: {
         display: "flex",
         flexWrap: "wrap",
         width: "100%",
+        paddingTop: theme.spacing(5),
         justifyContent: "center",
     }
-});
+}));

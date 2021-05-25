@@ -54,7 +54,6 @@ const Map = ({ data }) => {
     }
 
     const handleClickOnMarker = (data) => {
-        console.log("handleClickOnMarker");
         setPopupContent(data);
         setIsOpen(true);
     }
@@ -90,7 +89,7 @@ const Map = ({ data }) => {
                 mapboxApiAccessToken={accessToken}
                 onViewportChange={nextViewport => setViewport(nextViewport)}>
                     
-                <NavigationControl style={navControlStyle}/>
+                <NavigationControl className={classes.controls} style={navControlStyle}/>
                 
                 <Pins data={data} handleClick={handleClickOnMarker}/> 
 
@@ -100,7 +99,7 @@ const Map = ({ data }) => {
                     </Popup>
                 )}   
         
-                <FullscreenControl style={fullScreenStyle}/>
+                <FullscreenControl className={classes.controls} style={fullScreenStyle}/>
             </ReactMapGl>
 
             <SourceButton url={data.metadata.sourceurl} text={data.metadata.sourcetext}/>
@@ -126,4 +125,9 @@ const useStyles = makeStyles(theme => ({
             width: "100%",
         },
     },
+    controls: {
+        [theme.breakpoints.down("sm")]: {
+            display: "none"
+        }
+    }
 }));
