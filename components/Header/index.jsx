@@ -149,7 +149,7 @@ const useStyle = makeStyles((theme) => ({
         padding: theme.spacing(3),
         position:"absolute",
         zIndex: 2,
-        transform: "translateY(-120%)",
+        transform: "translateY(-160%)",
         transition: "transform 0.3s",
         "&:focus": {
             transform: "translateY(0%)"

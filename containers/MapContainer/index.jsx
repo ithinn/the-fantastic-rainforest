@@ -40,6 +40,7 @@ const MapContainer = ({ data }) => {
                         return (                        
                             <Tab 
                                 style={isLargeScreen ? null : {margin: "0 auto"}} 
+                                className={classes.tab}
                                 label={tabTitle} 
                                 {...a11yProps(index)}
                                 key={"tab" + index}/>
@@ -68,8 +69,8 @@ const useStyles = makeStyles((theme) => ({
     },
     tabs: {
         backgroundColor: theme.palette.navigation.main,
-        
+    },
+    tab: {
+        color:"#c7c5c5 ",
     }
-
-    
 }));
