@@ -13,7 +13,6 @@ const ClassicPopup = ( {data} ) => {
     const classes = useStyles();
     const { activePage } = usePageContext();
     const isMap = activePage.metadata.id === "maps" ? true : false;
-    console.log("CLASSIC", data);
 
     if (data !== undefined) {
         return(

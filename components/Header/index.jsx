@@ -9,8 +9,10 @@ import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
 import { usePageContext } from "../../context/PageContext"
 
-const Header = ( { page } ) => {
-  
+const Header = ({ page }) => {
+    
+    console.log("page in header", page);
+
     const classes = useStyle();
     const { activePage, defineActivePage } = usePageContext()
     const [allPages, setAllPages] = useState([])

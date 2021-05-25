@@ -1,5 +1,6 @@
 import Container from '@material-ui/core/Container';
 import Layout from "../components/Layout";
+import Head from "next/head";
 import React, {useEffect, useState} from "react"
 import PhotoCredit from "../components/PhotoCredit";
 import { makeStyles } from "@material-ui/core/styles"
@@ -21,8 +22,11 @@ export default function Index( { pageData } ) {
   }, []);
 
   return (
-    <Layout home>
-      
+    <Layout page="home">
+      <Head>
+          <title>Den fantastiske regnskogen</title>
+          <meta name="description" content="Utforsk regnskogen ved hjelp av kart, spill og faktaartikler. Passer best for barn mellom 6-10 år, og dekker flere læreplanmål."/>
+      </Head>
 
       <Container 
         className={classes.container} 

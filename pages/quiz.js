@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef } from "react";
 import Router, { useRouter } from "next/router";
+import Head from "next/head";
 import Image from "next/image";
 import { usePageContext } from "../context/PageContext";
 import {getCosmicData, bucket} from "../src/helpers/dataHelpers";
@@ -37,12 +38,7 @@ const Quiz = ({ questions }) => {
     const classes = useStyle();
     
 
-    //Start forest sounds
-    useEffect(() => {
-        playAudio("./audio/forestSounds.mp3");
-    }, []);
-
-    //Start response sounds
+    //Play response sounds
     useEffect(() => {
         if (isCorrect === true) {
             playAudio("./audio/quiz/happy.mp3")
@@ -157,6 +153,11 @@ const Quiz = ({ questions }) => {
 
     
     return (
+        <>
+        <Head>
+            <title>Den fantastiske regnskogen - Quiz</title>
+            <meta name="description" content="Quiz-spill der du skal hjelpe apen Nyani med å klatre til toppen av treet ved å svare riktig på spørsmål"/>
+        </Head>
         <Container 
             maxWidth={false} 
             disableGutters 
@@ -205,6 +206,7 @@ const Quiz = ({ questions }) => {
                 }
             </Animation> 
         </Container>
+        </>
     )
 }
 

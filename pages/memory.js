@@ -10,6 +10,7 @@ import {
     isItPair, 
     randomOrder, 
     getRandomListItem } from "../src/helpers/gameHelpers";
+import Head from "next/head"
 import { Box, Flex } from "reflexbox";
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography";
@@ -111,6 +112,12 @@ const Memory = () => {
 
 
     return(
+        <>
+        <Head>
+            <title>Den fantastiske regnskogen - Memory</title>
+            <meta name="description" content="Spill det klassiske memory-spillet med motiver fra regnskogen."/>
+        </Head>
+
         <Container 
             maxWidth={false} 
             disableGutters 
@@ -201,6 +208,7 @@ const Memory = () => {
             </Popup>
 
         </Container>
+        </>
     )
 }
 
