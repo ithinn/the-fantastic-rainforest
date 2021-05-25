@@ -13,8 +13,8 @@ const Media = ({ data }) => {
             : 
                 data.charttype === "pie" ? 
                 <PieChart data={data}/>
-            : <MapChart ariaLabel={data.image_alt} mapStyle={data.map_style}/>
-            }
+            : <MapChart ariaLabel={data.image_alt} data={data}/>
+            }   
         </>
     )
 }

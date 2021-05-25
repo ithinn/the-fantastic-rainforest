@@ -93,11 +93,14 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         [theme.breakpoints.down("sm")]: {
-            width: "100%"
+            width: "100%",
+            height: "100%"
         },
-        [theme.breakpoints.up("sm")]: {
-            width: "70%"
+        [theme.breakpoints.up("md")]: {
+            width: "100%",
+            height: "100%"
         },
+        
         height: "90vh",
         backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(2),

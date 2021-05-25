@@ -27,3 +27,19 @@ export function a11yProps(index) {
         'aria-controls': `tabpanel-${index}`
     };
 }
+
+export const getMapLegend = (data, mapData) => {
+    //console.log("data", data);
+    //console.log("mapData", mapData);
+    let theRightMap;
+
+    mapData.forEach(map => {
+        //console.log(map.metadata.style);
+        if (map.metadata.style === data.map_style) {
+           //console.log(map);
+           theRightMap = map;
+           
+        }
+    })
+    return theRightMap;
+}

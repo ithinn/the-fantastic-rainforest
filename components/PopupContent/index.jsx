@@ -8,8 +8,7 @@ const PopupContent = ({ data }) => {
     if( data !== null) {
     const { activePage, windowSize } = usePageContext();
     const isScreenXl = windowSize.width > 1900 ? true : false;
-    console.log("windiw", windowSize.width);
-
+    
     return(
         <>
         {activePage.slug === "fakta" ? 

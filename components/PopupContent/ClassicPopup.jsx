@@ -37,7 +37,7 @@ const ClassicPopup = ( {data} ) => {
 
                 <InfoBox data={data}/>
 
-                <Box mt={3} mb={4}>
+                <Box className={classes.description} mt={3} mb={4}>
                     <Description id="classicDescription" description={isMap ? data.text : data.metadata.description}/>
                 </Box>
 
@@ -79,5 +79,8 @@ const useStyles = makeStyles((theme) => ({
     description: {
         lineHeight: 2,
         fontSize: "1.5rem",
+        [theme.breakpoints.up("md")]: {
+            width: "60%",
+        }
     }
 }));

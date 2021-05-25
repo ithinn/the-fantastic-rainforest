@@ -1,6 +1,6 @@
 import IconWithText from "./IconWithText";
 import { usePageContext } from "../../context/PageContext"
-import { Flex } from "reflexbox";
+import { Flex, Box } from "reflexbox";
 import Audio from "../Audio";
 
 const InfoBox = ({ data }) => {
@@ -9,20 +9,27 @@ const InfoBox = ({ data }) => {
     const renderAnimalInfobox = () => {
         return (
             <Flex flexWrap="wrap" justifyContent="center">
-                <IconWithText
-                    ariaLabel="Geografisk område"
-                    imgSrc="/img/icons/globe-02.svg"
-                    imgAlt="Ikon: En jordklode"
-                    text={data.metadata.area}
-                />
-                <IconWithText
-                    ariaLabel="Spiser"
-                    imgSrc="/img/icons/diet.svg"
-                    imgAlt="Ikon: Kniv, gaffel og tallerken"
-                    text={data.metadata.food}
-                />
+                <Flex justifyContent="center" flexWrap="wrap">
+                    <IconWithText
+                        ariaLabel="Geografisk område"
+                        imgSrc="/img/icons/globe-02.svg"
+                        imgAlt="Ikon: En jordklode"
+                        text={data.metadata.area}
+                    />
+                    <IconWithText
+                        ariaLabel="Spiser"
+                        imgSrc="/img/icons/diet.svg"
+                        imgAlt="Ikon: Kniv, gaffel og tallerken"
+                        text={data.metadata.food}
+                    />
+                </Flex>
                 
-                {data.metadata.sound_url !== "" && <Audio audioFile={data.metadata.sound_url}/>}
+
+                {data.metadata.sound_url !== "" && 
+                    <Flex alignItems="center" m={3}>
+                        <Audio audioFile={data.metadata.sound_url}/>
+                    </Flex>
+                }
             </Flex>
         )
     }

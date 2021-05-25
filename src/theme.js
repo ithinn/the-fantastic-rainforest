@@ -23,7 +23,7 @@ let theme = createMuiTheme({
       default: '#fff',
     },
   },
-  colorArray: ["#227345", "#3f8c76", "#0c3140", "#196a73", "#8c3432"],
+  colorArray: ["#c0a320", "#80295e", "#16afc0", "#196a73", "#403608"],
 });
 
 theme = responsiveFontSizes(theme);

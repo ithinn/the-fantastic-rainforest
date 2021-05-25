@@ -26,6 +26,7 @@ export default Audio;
 const useStyles = makeStyles(theme => ({
     button: {
         backgroundColor: theme.palette.action.main,
+        maxHeight: theme.spacing(7),
         '&:hover': {
             border: `3px solid ${theme.palette.action.main}`
         }

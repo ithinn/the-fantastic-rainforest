@@ -9,6 +9,7 @@ import Media from "./Media";
 import RoundImage from "./RoundImage"
 import Description from "./Description";
 import SourceButton from "./SourceButton";
+import Legend from "../Map/Legend";
 
 const FactPopup = ({ data, isScreenXl }) => {
     const classes = useStyles();
@@ -40,7 +41,6 @@ const FactPopup = ({ data, isScreenXl }) => {
             )
         }
 
-
         const renderMediaSlide = () => {
             return(
                 <Flex className={classes.mediaSlideContainer}>
@@ -55,10 +55,8 @@ const FactPopup = ({ data, isScreenXl }) => {
                                 isScreenXl={isScreenXl} 
                                 src={data.image.url} 
                                 alt={data.image_alt}/>
-                            
                             </>
                         }
-                        
                     </Flex>
 
                     <Flex className={classes.itemWrapper}>
@@ -100,7 +98,7 @@ export default FactPopup;
 
 const useStyles = makeStyles(theme => ({
     container: {
-        minHeight: "70vh",
+        minHeight: "80vh",
         overflow: "auto",
         alignItems: "center",
         justifyContent: "center",
