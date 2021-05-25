@@ -8,7 +8,9 @@ const Games = ({ data }) => {
         <Layout page="games">
             <Head>
                 <title>Regnskogspill</title>
-                <meta name="description" content="Quiz og memory-spill med regnskog som tema."/>
+                <meta 
+                    name="description" 
+                    content="Quiz og memory-spill med regnskog som tema."/>
             </Head>
 
             <LandingPageContainer page="games" data={data}/>

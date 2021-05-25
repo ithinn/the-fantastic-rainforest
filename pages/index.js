@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import IndexAnimation from "../components/IndexAnimation"
 import { getCosmicData, bucket } from "../src/helpers/dataHelpers";
 
-export default function Index( { pageData } ) {
+export default function Index({ pageData }) {
 
   const classes = useStyles();
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
@@ -25,7 +25,9 @@ export default function Index( { pageData } ) {
     <Layout page="home">
       <Head>
           <title>Den fantastiske regnskogen</title>
-          <meta name="description" content="Utforsk regnskogen ved hjelp av kart, spill og faktaartikler. Passer best for barn mellom 6-10 år, og dekker flere læreplanmål."/>
+          <meta 
+            name="description" 
+            content="Utforsk regnskogen ved hjelp av kart, spill og faktaartikler. Passer best for barn mellom 6-10 år, og dekker flere læreplanmål."/>
       </Head>
 
       <Container 
@@ -45,7 +47,11 @@ export default function Index( { pageData } ) {
   );
 }
 
-// 
+export const getStaticProps = async () => {
+    
+  const pageData = await getCosmicData(bucket, "pages", "slug,title,metadata")
+  return {props: { pageData }} 
+}
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -57,12 +63,4 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundColor: theme.palette.primary.main,
   },
-
 }))
-
-export const getStaticProps = async () => {
-    
-  const pageData = await getCosmicData(bucket, "pages", "slug,title,metadata")
-
-  return {props: { pageData }} 
-}

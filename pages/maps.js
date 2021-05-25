@@ -9,7 +9,9 @@ const Maps = ({ data }) => {
         <Layout page="maps">
             <Head>
                 <title>Kart over regnskogen</title>
-                <meta name="description" content="Informative kart som viser hvor det fins regnskog i dag, og grunnene til at regnskogen blir borte."/>
+                <meta 
+                    name="description" 
+                    content="Informative kart som viser hvor det fins regnskog i dag, og grunnene til at regnskogen blir borte."/>
             </Head>
 
             <MapContainer page="maps" data={data}/>

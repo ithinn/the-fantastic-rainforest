@@ -36,7 +36,7 @@ const Memory = () => {
     const [flippedCards, setFlippedCards] = useState([]);
     const [numberOfPairs, setNumberOfPairs] = useState(0);
     const [statusMessage, setStatusMessage] = useState("")
-    const [initialMessage, setInitialMessage] = useState("")
+    const [initialAriaMessage, setInitialAriaMessage] = useState("")
     const router = useRouter();
     const { windowSize } = usePageContext();
 
@@ -64,6 +64,7 @@ const Memory = () => {
         }
 
         const gameStatus = isGameCompleted(cardsInPlay.length, numberOfPairs);
+        
         if (gameStatus) {
             setIsCompleted(true)
         }
@@ -72,18 +73,19 @@ const Memory = () => {
 
     }, [flippedCards])
 
+
     //Starts the game with the number of cards that the user has selected
     const drawCards = (number) => {
         const cardsToPlayWith = randomOrder(cards, number);
         setCardsInPlay(cardsToPlayWith);
         setIsPlaying(true);
-        setInitialMessage(`${cardsToPlayWith.length} memorykort med baksiden opp`)
+        setInitialAriaMessage(`${cardsToPlayWith.length} memorykort med baksiden opp`)
     }
 
     //Sets the isFlipped-prop of the selected card to true
     //Adds the selected card to the flippedCards-array
     const flipCard = (event) => {
-        setInitialMessage("");
+        setInitialAriaMessage("");
 
         if (flippedCards.length < 2) {
             let index = getIndex(cardsInPlay, event.target.id);
@@ -121,13 +123,10 @@ const Memory = () => {
         <>
         <Head>
             <title>Den fantastiske regnskogen - Memory</title>
-            <meta name="description" content="Spill det klassiske memory-spillet med motiver fra regnskogen."/>
+            <meta 
+                name="description" 
+                content="Spill det klassiske memory-spillet med motiver fra regnskogen."/>
         </Head>
-
-        <div class={classes.hidden} role="alert" aria-atomic="true">
-            {initialMessage}
-            {statusMessage}
-        </div>
 
         <Container 
             maxWidth={false} 
@@ -167,9 +166,16 @@ const Memory = () => {
                         color="primary" 
                         variant="contained"
                         aria-labelledby="howManyCards">
-                        <Button onClick={() => drawCards(12)}id="12" >12</Button>
-                        <Button onClick={() => drawCards(16)}id="16" >16</Button>
-                        <Button onClick={() => drawCards(20)}id="20" >20</Button>
+                        
+                        <Button 
+                            onClick={() => drawCards(12)}
+                            id="12">12</Button>
+                        <Button 
+                            onClick={() => drawCards(16)}
+                            id="16">16</Button>
+                        <Button 
+                            onClick={() => drawCards(20)}
+                            id="20">20</Button>
                     </ButtonGroup>  
                 </Flex>  
             )}
@@ -179,19 +185,18 @@ const Memory = () => {
 
             {cardsInPlay.length > 0 && (
                 <Flex className={classes.cardWrapper}>
+                    
                     {cardsInPlay.map((card, index) => {
                         return (
                             <Card 
                             key={index + card.id} 
                             id={card.id}
-                            
                             className={classes.card}                            
                             onClick={event => flipCard(event)}>
                             
                             {card.isFlipped ? 
                                 <CardActionArea>    
                                     <CardMedia
-                                        aria-label="Memorykort - bildet vises"  
                                         className={classes.media} 
                                         image={card.url}/>
                                     <CardContent className={classes.content}/>
@@ -199,7 +204,7 @@ const Memory = () => {
                                 :
                                 <CardActionArea>
                                     <CardMedia 
-                                        aria-label="klikk for å snu"  
+                                        aria-label="Klikk for å snu"  
                                         className={classes.media} 
                                         image=".././img/memory/unflipped2-02.jpg" 
                                         id={card.id}
@@ -214,22 +219,45 @@ const Memory = () => {
             )}
 
         
-            <Popup isOpen={isCompleted} handleClose={handleRestart}>
+            <Popup 
+                isOpen={isCompleted} 
+                handleClose={handleRestart}>
+                
                 <Flex className={classes.popupWrapper}>
                     <Typography variant="h2">
                         {getRandomListItem(feedback.completed)}
                                 
-                        <Flex mt={4} width="100%" justifyContent="space-around">
-                            <Button variant="outlined" startIcon={<RefreshIcon/>} color="primary" onClick={handleRestart}>Spill en gang til</Button>
-                            <Button variant="outlined" startIcon={<ExitToAppIcon/>}color="primary" onClick={() => {router.push("/games")}}>Gå til Spill-siden</Button>
+                        <Flex 
+                            mt={4} 
+                            width="100%" 
+                            justifyContent="space-around">
+
+                            <Button 
+                                variant="outlined" 
+                                startIcon={<RefreshIcon/>} 
+                                color="primary" 
+                                onClick={handleRestart}>Spill en gang til</Button>
+
+                            <Button 
+                                variant="outlined" 
+                                startIcon={<ExitToAppIcon/>}
+                                color="primary" 
+                                onClick={() => {router.push("/games")}}>Gå til Spill-siden</Button>
                         </Flex>
                     </Typography>
                 </Flex>
 
-                <Confetti width={windowSize.width} height={windowSize.height}/>
+                <Confetti 
+                    width={windowSize.width} 
+                    height={windowSize.height}/>
             </Popup>
-
         </Container>
+        
+        <div class={classes.hidden} role="alert" aria-atomic="true">
+            {initialAriaMessage}
+            {statusMessage}
+        </div>
+
         </>
     )
 }
@@ -302,7 +330,6 @@ const useStyles = (makeStyles(theme => ({
                 height: theme.spacing(20),
             },
         },
-        
         [theme.breakpoints.up("md")]: {
             '& > *': {
                 margin: theme.spacing(1),
@@ -321,19 +348,13 @@ const useStyles = (makeStyles(theme => ({
     },
     media: {
         [theme.breakpoints.down("sm")]: {
-
-                height: theme.spacing(20),
-            
+            height: theme.spacing(20),
         },
         [theme.breakpoints.up("md")]: {
-
-                height: theme.spacing(23),
-            
+            height: theme.spacing(23),
         },
         [theme.breakpoints.up("xl")]: {
-
-                height: theme.spacing(30),
-            
+            height: theme.spacing(30),
         }
     },
     restartBtn: {
@@ -349,5 +370,4 @@ const useStyles = (makeStyles(theme => ({
         padding: 0,
         position: "absolute"
     }
-
 })))

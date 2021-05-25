@@ -9,8 +9,11 @@ const Facts = ({ data }) => {
         <Layout page="facts">
             <Head>
                 <title>Fakta om regnskogen</title>
-                <meta name="description" content="Faktaartikler om tropisk regnskog, avskogning, urfolk og menneskene i regnskogen."/>
+                <meta 
+                    name="description" 
+                    content="Faktaartikler om tropisk regnskog, avskogning, urfolk og menneskene i regnskogen."/>
             </Head>
+            
             <LandingPageContainer page="facts" data={data}/>
         </Layout>   
     )

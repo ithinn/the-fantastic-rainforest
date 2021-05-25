@@ -23,18 +23,14 @@ export default function MyApp(props) {
   }, []);
 
   return (
-    <React.Fragment>
-      
-      
-
+    <>
       <Page>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Component {...pageProps} />
         </ThemeProvider>
       </Page>
-
-    </React.Fragment>
+    </>
   );
 }
 
