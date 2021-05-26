@@ -37,11 +37,19 @@ const ClassicPopup = ({ data, isScreenXl }) => {
 
                 <InfoBox data={data}/>
 
-                <Box className={classes.description} mt={3} mb={4}>
-                    <Description id="classicDescription" description={isMap ? data.text : data.metadata.description}/>
+                <Box 
+                    className={classes.description} 
+                    mt={3} 
+                    mb={4}>
+
+                    <Description 
+                        id="classicDescription" 
+                        description={isMap ? data.text : data.metadata.description}/>
                 </Box>
 
-                {!isMap && data.metadata.source_url !== undefined && <SourceButton url={data.source_url} text={data.source} />}
+                {!isMap && data.metadata.source_url !== undefined && 
+                    <SourceButton url={data.source_url} text={data.source} />
+                }
                 {isMap && <SourceButton url={data.source_url} text={data.source} />}
             </Flex>
         )
@@ -68,8 +76,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        flexWrap: "wrap"
-        
+        flexWrap: "wrap"  
     },
     itemWrapper: {
         padding: theme.spacing(3),

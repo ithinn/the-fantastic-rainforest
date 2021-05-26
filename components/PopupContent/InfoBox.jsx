@@ -8,8 +8,12 @@ const InfoBox = ({ data }) => {
 
     const renderAnimalInfobox = () => {
         return (
-            <Flex flexWrap="wrap" justifyContent="center">
-                <Flex justifyContent="center" flexWrap="wrap">
+            <Flex 
+                flexWrap="wrap" 
+                justifyContent="center">
+                <Flex 
+                    justifyContent="center" 
+                    flexWrap="wrap">
                     <IconWithText
                         ariaLabel="Geografisk område"
                         imgSrc="/img/icons/globe-02.svg"
@@ -36,35 +40,39 @@ const InfoBox = ({ data }) => {
 
     const renderMapInfobox = () => {
         return (
-            <Flex flexWrap="wrap" justifyContent="center" alignItems="flex-start">
+            <Flex 
+                flexWrap="wrap" 
+                justifyContent="center" 
+                alignItems="flex-start">
+                
                 <Box>
-                <IconWithText
-                ariaLabel="Geografisk område"
-                imgSrc="/img/icons/globe-02.svg"
-                imgAlt="Ikon: En jordklode"
-                text={data.area}
-                />
-                <IconWithText
-                    ariaLabel="Størrelse"
-                    imgSrc="/img/icons/ICONS_size.svg"
-                    imgAlt="Ikon: To trær, ett stort og ett lite"
-                    text={data.size}
-                />
+                    <IconWithText
+                    ariaLabel="Geografisk område"
+                    imgSrc="/img/icons/globe-02.svg"
+                    imgAlt="Ikon: En jordklode"
+                    text={data.area}
+                    />
+                    <IconWithText
+                        ariaLabel="Størrelse"
+                        imgSrc="/img/icons/ICONS_size.svg"
+                        imgAlt="Ikon: To trær, ett stort og ett lite"
+                        text={data.size}
+                    />
                 </Box>
 
                 <Box>
-                <IconWithText
-                    ariaLabel="Folkegrupper"
-                    imgSrc="/img/icons/ICONS_people.svg"
-                    imgAlt="Ikon: En gruppe mennesker"
-                    text={data.people}
-                />
-                <IconWithText
-                    ariaLabel="Trusler"
-                    imgSrc="/img/icons/ICONS_threats.svg"
-                    imgAlt="Ikon: Et tørt og ødelagt tre"
-                    text={data.threats}
-                />
+                    <IconWithText
+                        ariaLabel="Folkegrupper"
+                        imgSrc="/img/icons/ICONS_people.svg"
+                        imgAlt="Ikon: En gruppe mennesker"
+                        text={data.people}
+                    />
+                    <IconWithText
+                        ariaLabel="Trusler"
+                        imgSrc="/img/icons/ICONS_threats.svg"
+                        imgAlt="Ikon: Et tørt og ødelagt tre"
+                        text={data.threats}
+                    />
                 </Box>
             </Flex>
         )

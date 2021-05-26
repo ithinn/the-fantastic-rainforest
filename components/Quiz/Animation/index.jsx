@@ -3,9 +3,11 @@ import { makeStyles } from "@material-ui/core/styles"
 import { useState, useEffect } from "react"
 
 const Animation = ({level, children }) => {
+    
     const classes = useStyle();
     const [classBg, setClassBg] = useState(`${classes["root"]}`)
     
+
     //Defines classNames based on level. 
     useEffect(() => {
         if (level !== 0) {
@@ -22,6 +24,7 @@ const Animation = ({level, children }) => {
 }
 
 export default Animation;
+
 
 const useStyle = makeStyles({
     root: {

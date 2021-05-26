@@ -91,6 +91,7 @@ const Memory = () => {
             let index = getIndex(cardsInPlay, event.target.id);
     
             let newArray = [...cardsInPlay];
+            
             newArray[index] = {...newArray[index], isFlipped: true};
 
             setCardsInPlay(newArray);
@@ -105,8 +106,11 @@ const Memory = () => {
         let newArray = [...cardsInPlay];
 
         flippedCards.map((item) => {
+            
             let cardIndex = getIndex(cardsInPlay, item)
+            
             newArray[cardIndex] = {...newArray[cardIndex], isFlipped: false};
+            
             setCardsInPlay(newArray);
         })
     }

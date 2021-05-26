@@ -89,14 +89,15 @@ const LandingPageContainer = ({ data, page }) => {
            })}
 
            <Popup 
-            ariaId={ariaId}
-            ariaDescription={ariaDescription}
-            handleClose={handleClose}
-            handleSlide={input => handleSlide(input)} 
-            isLastSlide={isLastSlide} 
-            isFirstSlide={isFirstSlide} 
-            isSlideShow={isSlideShow} 
-            isOpen={isOpen}>
+                ariaId={ariaId}
+                ariaDescription={ariaDescription}
+                handleClose={handleClose}
+                handleSlide={input => handleSlide(input)} 
+                isLastSlide={isLastSlide} 
+                isFirstSlide={isFirstSlide} 
+                isSlideShow={isSlideShow} 
+                isOpen={isOpen}>
+                    
                 <PopupContent data={popupContent}/>
             </Popup>
        </Container>

@@ -8,7 +8,10 @@ const PhotoCredit = ({ creditText, isBgWhite }) => {
 
     return(
         <Box as="aside" className={classes.root}>
-            <Typography color={isBgWhite ? "#333" : "secondary"} variant="caption">
+            <Typography 
+                color={isBgWhite ? "#333" : "secondary"} 
+                variant="caption">
+                    
                 {creditText}
             </Typography>
         </Box>

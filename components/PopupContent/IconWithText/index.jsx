@@ -43,9 +43,12 @@ const IconWithText = ({ ariaLabel, imgSrc, imgAlt, text, audio }) => {
                     
             <Box>
                 <Typography 
-                    variant="overline" component="p">{ariaLabel}:</Typography>
+                    variant="overline" 
+                    component="p">{ariaLabel}:</Typography>
+                    
                 <Typography 
-                    variant="subtitle1" component="p">{text}</Typography>
+                    variant="subtitle1" 
+                    component="p">{text}</Typography>
             </Box>
         </Flex>  
     )

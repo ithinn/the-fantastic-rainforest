@@ -2,6 +2,7 @@ import Image from "next/image"
 import { makeStyles } from "@material-ui/core/styles"
 
 const RoundImage = ({ src, alt, isScreenXl }) => {
+    
     const classes = useStyles();
 
     return(

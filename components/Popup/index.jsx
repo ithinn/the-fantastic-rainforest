@@ -6,8 +6,8 @@ import { Box, Flex } from "reflexbox";
 import Button from "@material-ui/core/Button";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import CloseBtn from "../CloseBtn"
-import { PlayCircleFilledWhite } from '@material-ui/icons';
+import CloseBtn from "../CloseBtn";
+
 
 const Popup = ({  
     children,
@@ -52,26 +52,26 @@ const Popup = ({
 
                             {!isFirstSlide &&(
                                 <Box m={3}>
-                                <Button
-                                    aria-label="Gå til forrige lysbilde"
-                                    className={classes.navButton} 
-                                    startIcon={<NavigateBeforeIcon/>}
-                                    onClick={() => handleSlide("previous")} 
-                                    variant="outlined">Forrige
-                                </Button>
-                                </Box>
-                                
+                                    <Button
+                                        aria-label="Gå til forrige lysbilde"
+                                        className={classes.navButton} 
+                                        startIcon={<NavigateBeforeIcon/>}
+                                        onClick={() => handleSlide("previous")} 
+                                        variant="outlined">Forrige
+                                    </Button>
+                                </Box>   
                             )}
+
                             {!isLastSlide &&(
                                 <Box m={3}>
-                                <Button
-                                    aria-label="Gå til neste lysbilde"
-                                    className={classes.navButton} 
-                                    endIcon={<NavigateNextIcon/>}
-                                    onClick={() => handleSlide("next")} 
-                                    variant="outlined">Neste</Button>
-                                </Box>
-                                    
+                                    <Button
+                                        aria-label="Gå til neste lysbilde"
+                                        className={classes.navButton} 
+                                        endIcon={<NavigateNextIcon/>}
+                                        onClick={() => handleSlide("next")} 
+                                        variant="outlined">Neste
+                                    </Button>
+                                </Box>     
                             )}
                         </Flex>
                     )}  

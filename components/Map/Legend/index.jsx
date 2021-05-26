@@ -13,57 +13,55 @@ const Legend = ({data, handleClick}) => {
     const classes = useStyles();
         
     return(
-        
         <Card className={classes.root}>
             {data !== undefined &&(
-            
-            <CardContent>
-                <Box mb={3}>
-                    <Typography component="h2" gutterBottom>
-                        {data.metadata.description}
-                    </Typography>
-                </Box>
-
-                {data.metadata.legend.length > 0 && (
-                    <Box>
-                        <Typography 
-                            variant="subtitle2" 
-                            component="h3" 
-                            gutterBottom>
-                            {data.metadata.legendheading}
+                <CardContent>
+                    <Box mb={3}>
+                        <Typography component="h2" gutterBottom>
+                            {data.metadata.description}
                         </Typography>
-
-                        <Flex flexWrap="wrap">
-                            {data && (
-                                data.metadata.legend.map((item, index) => {
-                                    return (
-                                        <Flex key={"legend", index} m={2} p={2}>
-                                            <Box
-                                                aria-label="Kvadrat med en farge som tilsvarer en av fargene på kartet" 
-                                                width="20px" 
-                                                height="20px" 
-                                                bg={item.hex} 
-                                                mr={3}/>
-                                            <Typography 
-                                                component="p" 
-                                                color="#333">
-                                                {item.explanation}
-                                            </Typography>
-                                        </Flex>
-                                    )
-                                })
-                            )}
-                        </Flex>
                     </Box>
-                )}
 
-                <Button 
-                    color="primary" 
-                    variant="outlined" 
-                    startIcon={<CancelIcon/>} 
-                    onClick={handleClick}>Skjul dette
-                </Button>
-            </CardContent>
+                    {data.metadata.legend.length > 0 && (
+                        <Box>
+                            <Typography 
+                                variant="subtitle2" 
+                                component="h3" 
+                                gutterBottom>
+                                {data.metadata.legendheading}
+                            </Typography>
+
+                            <Flex flexWrap="wrap">
+                                {data && (
+                                    data.metadata.legend.map((item, index) => {
+                                        return (
+                                            <Flex key={"legend", index} m={2} p={2}>
+                                                <Box
+                                                    aria-label="Kvadrat med en farge som tilsvarer en av fargene på kartet" 
+                                                    width="20px" 
+                                                    height="20px" 
+                                                    bg={item.hex} 
+                                                    mr={3}/>
+                                                <Typography 
+                                                    component="p" 
+                                                    color="#333">
+                                                    {item.explanation}
+                                                </Typography>
+                                            </Flex>
+                                        )
+                                    })
+                                )}
+                            </Flex>
+                        </Box>
+                    )}
+
+                    <Button 
+                        color="primary" 
+                        variant="outlined" 
+                        startIcon={<CancelIcon/>} 
+                        onClick={handleClick}>Skjul dette
+                    </Button>
+                </CardContent>
             )}
         </Card>
     )

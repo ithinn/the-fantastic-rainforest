@@ -9,9 +9,10 @@ import Media from "./Media";
 import RoundImage from "./RoundImage"
 import Description from "./Description";
 import SourceButton from "./SourceButton";
-import Legend from "../Map/Legend";
+
 
 const FactPopup = ({ data, isScreenXl }) => {
+    
     const classes = useStyles();
 
     if (data !== undefined) {

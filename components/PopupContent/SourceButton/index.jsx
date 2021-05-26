@@ -46,7 +46,9 @@ const SourceButton = ({ url, text }) => {
 
                 <Box className={classes.typography}>
                     <Link href={url}>
-                        <a aria-label={`Lenke til kilden (tar deg ut av denne nettsiden). Kilde: ${text}`}>Kilde: {text}</a>  
+                        <a aria-label={`Lenke til kilden (tar deg ut av denne nettsiden). Kilde: ${text}`}>
+                            Kilde: {text}
+                        </a>  
                     </Link>0
                 </Box>
             </Popover>

@@ -20,8 +20,15 @@ const Dialogue = ({
     const renderInitialDialogue = () => {
         return(
             <>
-                <Flex className={classes.feedbackWrapper} color="primary">
-                    <Typography className={classes.initialText} variant="subtitle1" component="h1">
+                <Flex 
+                    className={classes.feedbackWrapper} 
+                    color="primary">
+
+                    <Typography 
+                        className={classes.initialText} 
+                        variant="subtitle1" 
+                        component="h1">
+
                         {isComplete ? outro : intro}
                     </Typography>
                 </Flex>
@@ -45,8 +52,14 @@ const Dialogue = ({
     const renderGameDialogue = () => {
         return(
             <>
-                <Flex className={classes.feedbackWrapper} color={isCorrect ? "green" : "#333"}>
-                    <Typography className={classes.feedbackText} component="h1" variant="h5">
+                <Flex 
+                    className={classes.feedbackWrapper} 
+                    color={isCorrect ? "green" : "#333"}>
+
+                    <Typography 
+                        className={classes.feedbackText} 
+                        component="h1" 
+                        variant="h5">
                         {feedbackBubble}
                     </Typography>
                 </Flex>

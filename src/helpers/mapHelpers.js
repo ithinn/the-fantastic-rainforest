@@ -5,7 +5,13 @@ export function TabPanel(props) {
     const {children, value, index, ...other} = props;
 
     return(
-        <div role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other}>
+        <div 
+            role="tabpanel" 
+            hidden={value !== index} 
+            id={`tabpanel-${index}`} 
+            aria-labelledby={`tab-${index}`} 
+            {...other}>
+
             {value === index && (
                 <div>
                     <Typography>{children}</Typography>
@@ -29,17 +35,16 @@ export function a11yProps(index) {
 }
 
 export const getMapLegend = (data, mapData) => {
-    //console.log("data", data);
-    //console.log("mapData", mapData);
+
     let theRightMap;
 
     mapData.forEach(map => {
-        //console.log(map.metadata.style);
+
         if (map.metadata.style === data.map_style) {
-           //console.log(map);
            theRightMap = map;
-           
         }
+
     })
+    
     return theRightMap;
 }

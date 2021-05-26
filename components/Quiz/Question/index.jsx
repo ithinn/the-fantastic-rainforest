@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import { usePageContext } from "../../../context/PageContext";
 
 
-const Question = ( {getAnswer, data} ) => {
+const Question = ({ getAnswer, data }) => {
     const [value, setValue] = useState(null);
     const [error, setError] = useState(false);
     const { windowSize } = usePageContext();
@@ -44,7 +44,11 @@ const Question = ( {getAnswer, data} ) => {
         {data !== null &&(
             <Flex className={classes.questionWrapper}>
 
-                <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
+                <Flex 
+                    justifyContent="center" 
+                    alignItems="center" 
+                    flexWrap="wrap">
+
                     <Box p={3}>
                         <Image
                             src={data.metadata.image.url}
@@ -55,7 +59,10 @@ const Question = ( {getAnswer, data} ) => {
                     </Box>
 
                     <Box className={classes.textWrapper}>
-                        <Typography variant={isScreenXl ? "h4" : "h5"} component="h2">
+                        <Typography 
+                            variant={isScreenXl ? "h4" : "h5"} 
+                            component="h2">
+
                             {data.metadata.question }
                         </Typography>
                     </Box>
@@ -63,7 +70,13 @@ const Question = ( {getAnswer, data} ) => {
                 
                 <Box p={3}>
                     {error &&(
-                        <Typography role="alert" aria-atomic="true" className={classes.error} variant="h6" component="p" color="error">
+                        <Typography 
+                            role="alert" 
+                            aria-atomic="true" 
+                            className={classes.error} 
+                            variant="h6" 
+                            component="p" 
+                            color="error">
                             Du må velge ett alternativ
                         </Typography>
                     )}
@@ -72,7 +85,14 @@ const Question = ( {getAnswer, data} ) => {
                         <Flex flexWrap="wrap" justifyContent="center">
                             <Flex className={classes.altWrapper}>
                                 <FormControl>
-                                    <FormLabel className={classes.legend} component="legend">Velg svar:</FormLabel>
+                                    
+                                    <FormLabel 
+                                        className={classes.legend} 
+                                        component="legend">
+                                        
+                                        Velg svar:
+                                    </FormLabel>
+
                                     <Box>
                                         <RadioGroup 
                                             aria-label="alternatives" 
@@ -94,6 +114,7 @@ const Question = ( {getAnswer, data} ) => {
                                             })}
                                         </RadioGroup>
                                     </Box>
+
                                 </FormControl>
                             </Flex>
 
